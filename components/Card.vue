@@ -15,19 +15,20 @@
   <div
     v-else
     v-for="data in datas"
+    :key="data.id"
     class="min-h-36 relative group cursor-pointer transition-all ease duration-300"
   >
     <div
       :class="`w-full h-auto overflow-auto flex rounded-xl relative images${data.id} scroll-smooth image-wrapper`"
     >
-      <img :src="data.thumbnail" alt="" class="aspect-square object-cover" />
-      <img :src="data?.images[0]" alt="" class="aspect-square object-cover" />
-      <img :src="data?.images[1]" alt="" class="aspect-square object-cover" />
-      <img :src="data?.images[2]" alt="" class="aspect-square object-cover" />
-      <img :src="data?.images[3]" alt="" class="aspect-square object-cover" />
-      <img :src="data?.images[4]" alt="" class="aspect-square object-cover" />
-      <img :src="data?.images[5]" alt="" class="aspect-square object-cover" />
-      <img :src="data?.images[6]" alt="" class="aspect-square object-cover" />
+      <img :src="data?.thumbnail" alt="" class="aspect-square object-cover" />
+      <img
+        v-for="images in data.images"
+        :src="images"
+        :key="images"
+        alt=""
+        class="aspect-square object-cover"
+      />
     </div>
     <div class="mt-3 flex gap-x-2 justify-between">
       <div>
@@ -57,7 +58,7 @@
       </div>
     </div>
     <div
-      class="absolute w-[87%] left-0 md:top-36 top-[47%] h-0 hidden group-hover:flex justify-between items-center pl-8 transition-all ease duration-300"
+      class="absolute w-[87%] left-0 md:top-[40%] top-[47%] h-0 hidden group-hover:flex justify-between items-center pl-8 transition-all ease duration-300"
     >
       <div class="relative h-full flex items-center">
         <button

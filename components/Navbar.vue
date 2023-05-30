@@ -1,6 +1,6 @@
 <template>
   <header class="z-50 bg-white md:sticky md:top-0">
-    <nav class="py-4 px-[35px] border-y border-gray-200">
+    <nav class="py-4 md:px-[35px] px-3 border-y border-gray-200">
       <div class="flex justify-between">
         <div class="max-md:hidden flex gap-x-2 items-center md:w-[30%]">
           <img src="~/assets/img/red-logo.svg" alt="" />
