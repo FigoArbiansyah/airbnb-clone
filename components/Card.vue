@@ -18,8 +18,9 @@
     :key="data.id"
     class="min-h-36 relative group cursor-pointer transition-all ease duration-300"
   >
-    <div
+    <NuxtLink
       :class="`w-full h-auto overflow-auto flex rounded-xl relative images${data.id} scroll-smooth image-wrapper`"
+      :to="`/${data.id}`"
     >
       <img :src="data?.thumbnail" alt="" class="aspect-square object-cover" />
       <img
@@ -29,8 +30,8 @@
         alt=""
         class="aspect-square object-cover"
       />
-    </div>
-    <div class="mt-3 flex gap-x-2 justify-between">
+    </NuxtLink>
+    <NuxtLink class="mt-3 flex gap-x-2 justify-between" :to="`/${data.id}`">
       <div>
         <p class="font-semibold">{{ data.title }}</p>
         <p class="text-gray-600">{{ data.brand }}, {{ data.category }}</p>
@@ -56,7 +57,7 @@
           <span>{{ data.rating }}</span>
         </p>
       </div>
-    </div>
+    </NuxtLink>
     <div
       class="absolute w-[87%] left-0 md:top-[40%] top-[47%] h-0 hidden group-hover:flex justify-between items-center pl-8 transition-all ease duration-300"
     >
