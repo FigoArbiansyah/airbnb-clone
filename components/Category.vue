@@ -1,9 +1,9 @@
 <template>
   <nav
-    class="pt-6 px-[35px] relative flex justify-around gap-x-3 nav-category transition-all ease"
+    class="pt-6 max-md:pb-2 px-[35px] relative flex max-md:flex-col justify-around gap-x-3 nav-category transition-all ease max-md:sticky top-0"
   >
     <div
-      class="overflow-x-auto grid grid-flow-col auto-cols-max gap-x-6 scroll-category z-40 relative scroll-smooth w-[80%]"
+      class="overflow-x-auto grid grid-flow-col auto-cols-max gap-x-6 scroll-category z-40 relative scroll-smooth md:w-[80%] w-full"
     >
       <div
         class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer relative"
@@ -187,7 +187,7 @@
       </div>
     </div>
     <div
-      class="p-2 border rounded-xl text-sm relative w-auto h-12 flex gap-x-2 justify-between items-center cursor-pointer"
+      class="p-2 border rounded-xl text-sm relative w-auto h-12 flex gap-x-2 justify-between items-center cursor-pointer max-md:z-50"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +206,7 @@
       <p>Filter</p>
     </div>
     <div
-      class="swipe-buttons absolute w-[87%] left-0 top-0 h-full flex justify-between items-center pl-8"
+      class="swipe-buttons absolute md:w-[87%] w-full left-0 top-0 h-full flex justify-between md:items-center max-md:-top-8 md:pl-8 max-md:px-4"
     >
       <div class="relative h-full flex items-center btn-prev">
         <button
@@ -296,14 +296,6 @@ if (process.client) {
     rgba(255, 255, 255, 1) 1%,
     rgba(255, 255, 255, 0) 98%,
     rgba(255, 255, 255, 1) 1%
-  );
-}
-
-.btn-next {
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 1)
   );
 }
 </style>

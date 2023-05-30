@@ -1,10 +1,12 @@
 <template>
-  <div class="mt-3 flex justify-center">
+  <div class="mt-3 flex justify-center max-md:px-3">
     <div class="py-4 px-3 border rounded-xl flex items-center">
-      <p class="font-semibold pr-4 border-r border-gray-300">
-        Tampilkan harga total
-      </p>
-      <p class="text-gray-500 pl-4">Termasuk semua biaya, sebelum pajak</p>
+      <div class="flex max-md:flex-col">
+        <p class="font-semibold pr-4 md:border-r border-gray-300">
+          Tampilkan harga total
+        </p>
+        <p class="text-gray-500 md:pl-4">Termasuk semua biaya, sebelum pajak</p>
+      </div>
       <div
         class="ml-6 w-14 h-8 rounded-full bg-gray-400 bg-opacity-80 p-[1px] relative hover:bg-[#717171] cursor-pointer transition-all ease duration-300"
         @click="toggle()"

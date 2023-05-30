@@ -1,8 +1,8 @@
 <template>
-  <header class="z-50 bg-white sticky top-0">
+  <header class="z-50 bg-white md:sticky md:top-0">
     <nav class="py-4 px-[35px] border-y border-gray-200">
       <div class="flex justify-between">
-        <div class="flex gap-x-2 items-center md:w-[30%]">
+        <div class="max-md:hidden flex gap-x-2 items-center md:w-[30%]">
           <img src="~/assets/img/red-logo.svg" alt="" />
           <img
             src="~/assets/img/airbnb-logo-typing.png"
@@ -11,18 +11,22 @@
           />
         </div>
         <div
-          class="flex items-center rounded-full py-2 pl-2 pr-2 shadow border font-[500] cursor-pointer hover:shadow-lg transition-all ease"
+          class="flex max-md:flex-col max-md:items-start items-center rounded-full py-2 pl-2 pr-2 shadow border font-[500] cursor-pointer hover:shadow-lg transition-all ease max-md:w-full"
         >
-          <p class="px-4 border-r border-gray-300">Ke mana saja</p>
-          <p class="px-4 border-r border-gray-300">Minggu mana pun</p>
-          <p class="px-4 font-light">Tambahkan tamu</p>
+          <p class="px-4 md:border-r border-gray-300">Ke mana saja</p>
+          <div class="flex max-md:gap-x-2 max-md:pl-4 max-md:pr-6">
+            <p class="md:px-4 md:border-r border-gray-300 max-md:font-light">
+              Minggu mana pun
+            </p>
+            <p class="md:px-4 font-light">Tambahkan tamu</p>
+          </div>
           <div
-            class="w-7 h-7 p-1.5 grid place-items-center rounded-full bg-[#ff5a5f]"
+            class="w-7 h-7 p-1.5 grid place-items-center rounded-full bg-[#ff5a5f] max-md:hidden"
           >
             <img src="~/assets/img/search.svg" alt="" />
           </div>
         </div>
-        <div class="flex gap-x-0 items-center md:w-[30%]">
+        <div class="max-md:hidden flex gap-x-0 items-center md:w-[30%]">
           <div
             class="py-[3px] px-4 hover:bg-gray-50 grid place-items-center rounded-full cursor-pointer h-10 font-semibold transition-all ease"
           >
