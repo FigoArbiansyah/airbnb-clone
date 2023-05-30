@@ -98,6 +98,85 @@
           </div>
         </div>
       </section>
+      <section
+        class="mt-8 grid md:grid-cols-3 grid-cols-1 gap-x-16 md:px-[115px] px-3 relative"
+      >
+        <div class="md:col-span-2 min-h-[200vh]">
+          <div
+            class="flex gap-2 w-full justify-between items-center border-b pb-5"
+          >
+            <div>
+              <p class="text-2xl font-semibold text-gray-700">
+                Seluruh vila. Tuan rumah: Ari & Kim ,
+              </p>
+              <p class="text-gray-500">
+                <span>8 tamu</span>
+                .
+                <span>2 kamar tidur</span>
+                .
+                <span>4 tempat tidur</span>
+                .
+                <span>3 tempat mandi</span>
+              </p>
+            </div>
+            <div>
+              <img
+                src="~/assets/img/profile.webp"
+                class="w-14 h-14 rounded-full"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="mt-5">
+            <p class="text-gray-800">
+              {{ data?.description }}. Vila mewah baru di Bali Utara dengan
+              pemandangan laut yang menakjubkan dan tidak terganggu. Selesai
+              pada tahun 2015, Kami memiliki 3 tempat yang hampir sama, jadi
+              silakan lihat 2 tempat lainnya untuk berjaga - jaga jika tempat
+              ini terpesan.
+            </p>
+          </div>
+        </div>
+        <div class="border p-5 rounded-xl sticky top-8 self-start shadow">
+          <p v-if="data.discountPercentage">
+            <span class="text-xl font-semibold text-gray-700 line-through"
+              >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
+            </span>
+            <span class="text-xl font-semibold">
+              Rp
+              {{
+                (
+                  data.price * 14987 -
+                  data.price * 14987 * (data.discountPercentage / 100)
+                ).toLocaleString("id-ID")
+              }}</span
+            >
+          </p>
+          <p v-else>
+            <span class="text-xl font-semibold text-gray-700"
+              >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}</span
+            >
+          </p>
+          <div class="flex items-center gap-x-1">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 8 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 0L4.89806 2.76393H7.80423L5.45308 4.47214L6.35114 7.23607L4 5.52786L1.64886 7.23607L2.54692 4.47214L0.195774 2.76393H3.10194L4 0Z"
+                fill="#000"
+              />
+            </svg>
+            <p class="text-sm">
+              <span>{{ data.rating }} . </span>
+              <span class="underline text-gray-700">365 ulasan</span>
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 </template>

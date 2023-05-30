@@ -1,5 +1,5 @@
 <template>
-  <header class="z-50 bg-white md:sticky md:top-0 border-b border-gray-200">
+  <header class="z-50 bg-white border-b border-gray-200">
     <nav class="py-4 md:px-[115px] px-3">
       <div class="flex justify-between">
         <a href="/" class="max-md:hidden flex gap-x-2 items-center md:w-[30%]">
