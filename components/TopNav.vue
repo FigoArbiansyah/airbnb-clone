@@ -1,5 +1,5 @@
 <template>
-  <nav class="py-4 px-[35px] bg-[#f7f7f7] border-b border-gray-200">
+  <nav class="py-4 px-[35px] bg-[#f7f7f7]">
     <div class="flex justify-between items-center">
       <p class="text-xl font-[500]">Kamar dan 50+ fitur terkini</p>
       <div class="flex gap-x-4 items-center cursor-pointer">
