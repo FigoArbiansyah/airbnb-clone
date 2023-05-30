@@ -99,9 +99,9 @@
         </div>
       </section>
       <section
-        class="mt-8 grid md:grid-cols-3 grid-cols-1 gap-x-16 md:px-[115px] px-3 relative"
+        class="mt-8 grid md:grid-cols-12 grid-cols-1 gap-x-16 md:px-[115px] px-3 relative"
       >
-        <div class="md:col-span-2 min-h-[200vh]">
+        <div class="md:col-span-7 min-h-[200vh]">
           <div
             class="flex gap-2 w-full justify-between items-center border-b pb-5"
           >
@@ -137,26 +137,30 @@
             </p>
           </div>
         </div>
-        <div class="border p-5 rounded-xl sticky top-8 self-start shadow">
-          <p v-if="data.discountPercentage">
-            <span class="text-xl font-semibold text-gray-700 line-through"
-              >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
-            </span>
-            <span class="text-xl font-semibold">
-              Rp
-              {{
-                (
-                  data.price * 14987 -
-                  data.price * 14987 * (data.discountPercentage / 100)
-                ).toLocaleString("id-ID")
-              }}</span
-            >
-          </p>
-          <p v-else>
-            <span class="text-xl font-semibold text-gray-700"
-              >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}</span
-            >
-          </p>
+        <div
+          class="md:col-span-5 border p-5 rounded-xl sticky top-8 self-start shadow"
+        >
+          <div>
+            <p v-if="data.discountPercentage">
+              <span class="text-xl font-semibold text-gray-700 line-through"
+                >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
+              </span>
+              <span class="text-xl font-semibold">
+                Rp
+                {{
+                  (
+                    data.price * 14987 -
+                    data.price * 14987 * (data.discountPercentage / 100)
+                  ).toLocaleString("id-ID")
+                }}</span
+              >
+            </p>
+            <p v-else>
+              <span class="text-xl font-semibold text-gray-700"
+                >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}</span
+              >
+            </p>
+          </div>
           <div class="flex items-center gap-x-1">
             <svg
               width="14"
@@ -174,6 +178,65 @@
               <span>{{ data.rating }} . </span>
               <span class="underline text-gray-700">365 ulasan</span>
             </p>
+          </div>
+          <div class="mt-3 grid grid-cols-2 rounded-lg overflow-hidden">
+            <div class="border py-2.5 px-3">
+              <p class="text-xs uppercase font-semibold">check-in</p>
+              <p class="">11/6/2023</p>
+            </div>
+            <div class="border py-2.5 px-3">
+              <p class="text-xs uppercase font-semibold">check-out</p>
+              <p class="">14/6/2023</p>
+            </div>
+            <div class="col-span-2 border py-2.5 px-3">
+              <p class="text-xs uppercase font-semibold">tamu</p>
+              <p class="">2 tamu</p>
+            </div>
+          </div>
+          <div class="mt-4 text-center">
+            <NuxtLink to="/reservation"
+              ><div
+                class="w-full text-center py-3 bg-[#EF5A5F] rounded-xl font-semibold text-white"
+              >
+                Pesan
+              </div></NuxtLink
+            >
+            <p class="text-gray-600 mt-3">Anda belum dikenakan biaya</p>
+            <div class="mt-5 flex justify-between pb-5 border-b">
+              <p class="underline">
+                Rp
+                {{
+                  (
+                    data.price * 14987 -
+                    data.price * 14987 * (data.discountPercentage / 100)
+                  ).toLocaleString("id-ID")
+                }}
+                x 3 malam
+              </p>
+              <p class="">
+                Rp
+                {{
+                  (
+                    (data.price * 14987 -
+                      data.price * 14987 * (data.discountPercentage / 100)) *
+                    3
+                  ).toLocaleString("id-ID")
+                }}
+              </p>
+            </div>
+            <div class="pt-5 flex justify-between text-black">
+              <p class="font-semibold">Total sebelum pajak</p>
+              <p class="font-semibold">
+                Rp
+                {{
+                  (
+                    (data.price * 14987 -
+                      data.price * 14987 * (data.discountPercentage / 100)) *
+                    3
+                  ).toLocaleString("id-ID")
+                }}
+              </p>
+            </div>
           </div>
         </div>
       </section>
