@@ -3,188 +3,20 @@
     class="pt-6 max-md:pb-2 px-[35px] relative flex max-md:flex-col justify-around gap-x-3 nav-category transition-all ease max-md:sticky top-0"
   >
     <div
-      class="overflow-x-auto grid grid-flow-col auto-cols-max gap-x-6 scroll-category z-40 relative scroll-smooth md:w-[80%] w-full"
+      class="overflow-x-auto grid grid-flow-col auto-cols-max gap-x-8 scroll-category z-40 relative scroll-smooth md:w-[80%] w-full"
     >
-      <div
+      <NuxtLink
+        v-for="category in categories"
+        :to="`?category=${category}`"
         class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer relative"
       >
         <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
+          src="https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg"
           alt=""
           class="w-6 h-6"
         />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
-      <div
-        class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer"
-      >
-        <img
-          src="https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg"
-          alt=""
-          class="w-6 h-6"
-        />
-        <p>Pemandangan Cantik</p>
-      </div>
+        <p>{{ category }}</p>
+      </NuxtLink>
     </div>
     <div
       class="p-2 border rounded-xl text-sm relative w-auto h-12 flex gap-x-2 justify-between items-center cursor-pointer max-md:z-50"
@@ -257,6 +89,21 @@
 </template>
 
 <script setup>
+import axios from "axios";
+
+let categories = [];
+
+const getCategories = async () => {
+  try {
+    const res = await axios.get("https://dummyjson.com/products/categories");
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+categories = await getCategories();
+
 function scrollToNext() {
   const scrollCategory = document.querySelector(".scroll-category");
   scrollCategory.scrollLeft += scrollCategory.offsetWidth / 4;

@@ -114,7 +114,7 @@ import axios from "axios";
 
 export default {
   data() {
-    return { datas: [] };
+    return { datas: [], category: null };
   },
   async created() {
     this.getDatas();
@@ -136,6 +136,9 @@ export default {
       const images = document.querySelector(".images" + id);
       images.scrollLeft -= images.offsetWidth;
     },
+  },
+  mounted() {
+    this.category = this.$route.query.category;
   },
 };
 </script>

@@ -2,14 +2,17 @@
   <header class="z-50 bg-white md:sticky md:top-0">
     <nav class="py-4 md:px-[35px] px-3 border-y border-gray-200">
       <div class="flex justify-between">
-        <div class="max-md:hidden flex gap-x-2 items-center md:w-[30%]">
+        <NuxtLink
+          class="max-md:hidden flex gap-x-2 items-center md:w-[30%]"
+          :to="`?category=null`"
+        >
           <img src="~/assets/img/red-logo.svg" alt="" />
           <img
             src="~/assets/img/airbnb-logo-typing.png"
             class="w-[70px]"
             alt=""
           />
-        </div>
+        </NuxtLink>
         <div
           class="flex max-md:flex-col max-md:items-start items-center rounded-full py-2 pl-2 pr-2 shadow border font-[500] cursor-pointer hover:shadow-lg transition-all ease max-md:w-full"
         >

@@ -22,12 +22,12 @@
         </div>
         <div class="max-md:hidden flex gap-x-0 items-center md:w-[30%]">
           <div
-            class="py-[3px] px-4 hover:bg-gray-50 grid place-items-center rounded-full cursor-pointer h-10 font-semibold transition-all ease"
+            class="py-[3px] px-1 hover:bg-gray-50 grid place-items-center rounded-full cursor-pointer h-10 font-semibold transition-all ease"
           >
             <span class="text-sm">Jadikan rumah Anda Airbnb</span>
           </div>
           <div
-            class="p-2 ,l-3 hover:bg-gray-50 grid place-items-center rounded-full cursor-pointer transition-all ease"
+            class="p-2 ml-3 hover:bg-gray-50 grid place-items-center rounded-full cursor-pointer transition-all ease"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -83,6 +83,7 @@
               <p class="cursor-pointer underline font-semibold">Edit</p>
             </div>
           </div>
+          <RegisterCard />
         </div>
         <div class="pl-24 mt-10">
           <div class="py-4 px-5 border rounded-xl sticky top-20">
