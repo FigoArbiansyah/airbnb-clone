@@ -27,7 +27,7 @@
         </p>
       </div>
       <div class="md:ml-6 grid grid-cols-2">
-        <div class="pb-8 border-b">
+        <div class="pb-8 self-start min-h-[150vh]">
           <div class="mt-10 py-4 px-5 border rounded-xl relative">
             <div>
               <p class="font-semibold">Harga lebih rendah</p>
@@ -74,7 +74,7 @@
               <p class="cursor-pointer underline font-semibold">Edit</p>
             </div>
           </div>
-          <div class="mt-6 flex justify-between">
+          <div class="mt-6 flex justify-between border-b pb-8">
             <div>
               <p class="font-semibold text-lg">Tamu</p>
               <p class="">2 tamu</p>
@@ -85,8 +85,8 @@
           </div>
         </div>
         <div class="pl-24 mt-10">
-          <div class="py-4 px-5 border rounded-xl">
-            <div class="flex gap-x-3">
+          <div class="py-4 px-5 border rounded-xl sticky top-20">
+            <div class="flex gap-x-3 mb-6">
               <div class="">
                 <img
                   src="~/assets/img/reservation.webp"
@@ -140,6 +140,31 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="py-5 border-y">
+              <p class="font-semibold text-2xl mb-5 text-gray-800">
+                Perincian Harga
+              </p>
+              <div class="flex justify-between text-slate-600 mb-3">
+                <p class="">Rp3.600.000,00 x 5 malam</p>
+                <p class="">Rp18.000.000,00</p>
+              </div>
+              <div class="flex justify-between text-slate-600 mb-3">
+                <p class="underline">Diskon menginap jangka panjang</p>
+                <p class="text-green-600">-Rp1.260.000,00</p>
+              </div>
+              <div class="flex justify-between text-slate-600 mb-3">
+                <p class="underline">Biaya kebersihan</p>
+                <p class="">Rp100.000,00</p>
+              </div>
+              <div class="flex justify-between text-slate-600 mb-3">
+                <p class="underline">Biaya layanan Airbnb</p>
+                <p class="">Rp2.638.936,95</p>
+              </div>
+            </div>
+            <div class="pt-5 flex justify-between font-semibold pb-2">
+              <p>Total (IDR)</p>
+              <p>Rp19.478.936,95</p>
             </div>
           </div>
         </div>
