@@ -119,13 +119,13 @@
                 <span>3 tempat mandi</span>
               </p>
             </div>
-            <div>
+            <!-- <div>
               <img
                 src="~/assets/img/profile.webp"
                 class="w-14 h-14 rounded-full"
                 alt=""
               />
-            </div>
+            </div> -->
           </div>
           <div class="mt-5 pb-5 border-b">
             <div class="flex items-start gap-x-3">

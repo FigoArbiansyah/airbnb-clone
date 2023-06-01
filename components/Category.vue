@@ -7,7 +7,7 @@
     >
       <NuxtLink
         v-for="category in categories"
-        :to="`?category=${category}`"
+        :to="`/category/${category}`"
         class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer relative"
       >
         <img
@@ -113,23 +113,25 @@ function scrollToPrev() {
   scrollCategory.scrollLeft -= scrollCategory.offsetWidth / 4;
 }
 
-if (process.client) {
-  const navScroll = () => {
-    const nav = document.querySelector(".nav-category");
-    if (
-      document.documentElement.scrollTop > 175 ||
-      document.body.scrollTop > 175
-    ) {
-      nav.classList.add("border-b");
-      nav.classList.add("shadow-sm");
-    } else {
-      nav.classList.remove("border-b");
-      nav.classList.remove("shadow-sm");
-    }
-    window.addEventListener("scroll", navScroll);
-  };
-  navScroll();
-}
+onMounted(() => {
+  if (process.client) {
+    const navScroll = () => {
+      const nav = document.querySelector(".nav-category");
+      if (
+        document.documentElement.scrollTop > 175 ||
+        document.body.scrollTop > 175
+      ) {
+        nav.classList.add("border-b");
+        nav.classList.add("shadow-sm");
+      } else {
+        nav.classList.remove("border-b");
+        nav.classList.remove("shadow-sm");
+      }
+      window.addEventListener("scroll", navScroll);
+    };
+    navScroll();
+  }
+});
 </script>
 
 <style scope>

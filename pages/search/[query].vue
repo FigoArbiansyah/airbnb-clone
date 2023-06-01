@@ -7,14 +7,13 @@
       <section
         class="relative mt-5 md:px-[38px] px-3 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-10"
       >
-        <Card :category="null" />
+        <Card :query="query" :category="null" />
       </section>
     </div>
   </main>
 </template>
 
 <script setup>
-useHead({
-  title: "Gocommerce",
-});
+const route = useRoute();
+const query = route.params.query;
 </script>

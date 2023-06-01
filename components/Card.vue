@@ -114,16 +114,29 @@ import axios from "axios";
 
 export default {
   data() {
-    return { datas: [], category: null };
+    return { datas: [], route: useRoute() };
   },
+  props: ["category", "query"],
   async created() {
     this.getDatas();
   },
   methods: {
     async getDatas() {
       try {
-        const res = await axios.get("https://dummyjson.com/products");
-        this.datas = await res.data.products;
+        if (this.query == null && this.category == null) {
+          const res = await axios.get("https://dummyjson.com/products");
+          this.datas = await res.data.products;
+        } else if (this.query != null && this.category == null) {
+          const res = await axios.get(
+            "https://dummyjson.com/products/search?q=" + this.query
+          );
+          this.datas = await res.data.products;
+        } else if (this.query == null && this.category != null) {
+          const res = await axios.get(
+            "https://dummyjson.com/products/category/" + this.category
+          );
+          this.datas = await res.data.products;
+        }
       } catch (error) {
         console.log(error);
       }
@@ -137,9 +150,7 @@ export default {
       images.scrollLeft -= images.offsetWidth;
     },
   },
-  mounted() {
-    this.category = this.$route.query.category;
-  },
+  mounted() {},
 };
 </script>
 
