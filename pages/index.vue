@@ -17,4 +17,12 @@
 useHead({
   title: "Gocommerce",
 });
+onMounted(() => {
+  if (process.client) {
+    const data = JSON.parse(localStorage.getItem("user")) || "";
+    if (data == "") {
+      localStorage.setItem("user", "");
+    }
+  }
+});
 </script>
