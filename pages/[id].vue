@@ -301,7 +301,7 @@ export default {
     async setCart() {
       try {
         const user = JSON.parse(localStorage.getItem("user")) || "";
-        if (user == "") {
+        if (user == 0 || user == "") {
           alert("Login terlebih dahulu");
           return false;
         } else {

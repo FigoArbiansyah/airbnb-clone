@@ -19,9 +19,9 @@ useHead({
 });
 onMounted(() => {
   if (process.client) {
-    const data = JSON.parse(localStorage.getItem("user")) || "";
-    if (data == "") {
-      localStorage.setItem("user", "");
+    const data = JSON.parse(localStorage.getItem("user")) || "0";
+    if (data == "0") {
+      localStorage.setItem("user", "0");
     }
   }
 });
