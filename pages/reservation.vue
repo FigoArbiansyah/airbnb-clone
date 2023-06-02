@@ -4,7 +4,7 @@
     <main class="md:py-20 md:pl-24 md:pr-32 max-md:p-5">
       <div class="relative">
         <NuxtLink
-          :to="`/${id}`"
+          :to="`/cart`"
           class="cursor-pointer w-10 h-10 rounded-full grid place-items-center hover:bg-gray-100 absolute top-0 -left-4"
         >
           <svg
@@ -32,8 +32,8 @@
             <div>
               <p class="font-semibold">Harga lebih rendah</p>
               <p class="mt-2 w-[80%]">
-                Harga untuk tanggal pilihan Anda lebih murah Rp3951062 dari
-                harga per malam rata-rata 60 hari terakhir.
+                Goomerce menyediakan banyak diskon untuk setiap produk. Ayo
+                dapatkan dan pesan sekarang juga!
               </p>
             </div>
             <svg
@@ -63,24 +63,38 @@
             </svg>
           </div>
           <div class="mt-6">
-            <p class="font-semibold text-2xl">Perjalanan Anda</p>
+            <p class="font-semibold text-2xl">Barang</p>
           </div>
-          <div class="mt-6 flex justify-between">
+          <div
+            v-for="data in products"
+            class="mt-6 flex justify-between pb-3 border-b"
+          >
             <div>
-              <p class="font-semibold text-lg">Tanggal</p>
-              <p class="">11-14 Jun</p>
+              <p class="font-semibold text-lg">{{ data.title }}</p>
+              <p class="">
+                Rp.
+                {{
+                  (
+                    data.price * 14987 -
+                    data.price * 14987 * (data.discountPercentage / 100)
+                  ).toLocaleString()
+                }}
+              </p>
+              <p class="">x {{ data.quantity }} pcs</p>
             </div>
             <div>
-              <p class="cursor-pointer underline font-semibold">Edit</p>
-            </div>
-          </div>
-          <div class="mt-6 flex justify-between border-b pb-8">
-            <div>
-              <p class="font-semibold text-lg">Tamu</p>
-              <p class="">2 tamu</p>
-            </div>
-            <div>
-              <p class="cursor-pointer underline font-semibold">Edit</p>
+              <p class="font-semibold">
+                <span class="font-semibold text-lg"
+                  >Rp.
+                  {{
+                    (
+                      (data.price * 14987 -
+                        data.price * 14987 * (data.discountPercentage / 100)) *
+                      data.quantity
+                    ).toLocaleString("id-ID")
+                  }}</span
+                >
+              </p>
             </div>
           </div>
           <RegisterCard />
@@ -90,54 +104,21 @@
             <div class="flex gap-x-3 mb-6">
               <div class="">
                 <img
-                  src="~/assets/img/reservation.webp"
+                  src="https://images.unsplash.com/photo-1569180880150-df4eed93c90b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFya2V0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
                   class="w-32 aspect-square object-cover rounded-lg"
                   alt=""
                 />
               </div>
               <div class="flex flex-col justify-between">
                 <div>
-                  <p class="text-xs text-gray-800">Seluruh vila</p>
-                  <p class="uppercase text-gray-800">
-                    180° VIEW, PRIVATE POOL VILLA..
-                  </p>
+                  <p class="text-xs text-gray-800">gocomerce</p>
+                  <p class="uppercase text-gray-800">banyak diskon</p>
                 </div>
                 <div>
                   <div class="flex items-center gap-x-1">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 8 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4 0L4.89806 2.76393H7.80423L5.45308 4.47214L6.35114 7.23607L4 5.52786L1.64886 7.23607L2.54692 4.47214L0.195774 2.76393H3.10194L4 0Z"
-                        fill="#000"
-                      />
-                    </svg>
                     <p class="text-xs text-slate-500">
-                      <span>4.9 . (365)</span>
-                      .
+                      <span>Buat pesanan sekarang</span>
                     </p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      aria-hidden="true"
-                      role="presentation"
-                      focusable="false"
-                      style="
-                        display: block;
-                        height: 12px;
-                        width: 12px;
-                        fill: currentcolor;
-                      "
-                    >
-                      <path
-                        d="M8.498 7.593l3.1-1.74c.5-.278.99-.552 1.474-.82a.833.833 0 0 0 .428-.729v-2.97A.833.833 0 0 0 12.667.5H3.333a.833.833 0 0 0-.833.833v2.97c0 .303.164.582.428.729l3 1.675 1.575.886c.348.195.647.195.995-.001zM8 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"
-                      ></path>
-                    </svg>
-                    <span class="text-xs text-slate-500">Hos Teladan</span>
                   </div>
                 </div>
               </div>
@@ -146,26 +127,26 @@
               <p class="font-semibold text-2xl mb-5 text-gray-800">
                 Perincian Harga
               </p>
-              <div class="flex justify-between text-slate-600 mb-3">
-                <p class="">Rp3.600.000,00 x 5 malam</p>
-                <p class="">Rp18.000.000,00</p>
-              </div>
-              <div class="flex justify-between text-slate-600 mb-3">
-                <p class="underline">Diskon menginap jangka panjang</p>
-                <p class="text-green-600">-Rp1.260.000,00</p>
-              </div>
-              <div class="flex justify-between text-slate-600 mb-3">
-                <p class="underline">Biaya kebersihan</p>
-                <p class="">Rp100.000,00</p>
-              </div>
-              <div class="flex justify-between text-slate-600 mb-3">
-                <p class="underline">Biaya layanan Airbnb</p>
-                <p class="">Rp2.638.936,95</p>
+              <div
+                v-for="data in products"
+                class="flex justify-between text-slate-600 mb-3"
+              >
+                <p class="">{{ data.title }}</p>
+                <p class="">
+                  Rp.
+                  {{
+                    (
+                      (data.price * 14987 -
+                        data.price * 14987 * (data.discountPercentage / 100)) *
+                      data.quantity
+                    ).toLocaleString("id-ID")
+                  }}
+                </p>
               </div>
             </div>
             <div class="pt-5 flex justify-between font-semibold pb-2">
               <p>Total (IDR)</p>
-              <p>Rp19.478.936,95</p>
+              <p>Rp. {{ total.toLocaleString() }}</p>
             </div>
           </div>
         </div>
@@ -179,10 +160,24 @@ export default {
   data() {
     return {
       id: null,
+      products: [],
+      total: 0,
     };
   },
   mounted() {
-    this.id = this.$route.query.id;
+    if (process.client) {
+      this.products = JSON.parse(localStorage.getItem("products"));
+      if (this.products?.length > 0) {
+        for (let i = 0; i < this.products.length; i++) {
+          this.total +=
+            (this.products[i].price * 14987 -
+              this.products[i].price *
+                14987 *
+                (this.products[i].discountPercentage / 100)) *
+            this.products[i].quantity;
+        }
+      }
+    }
   },
 };
 </script>
