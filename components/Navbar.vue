@@ -1,7 +1,7 @@
 <template>
   
     <nav class="py-4 md:px-[35px] px-3 border-y border-gray-200">
-      <div class="flex justify-between">
+      <div class="flex justify-between max-md:gap-x-2">
         <NuxtLink
           class="max-md:hidden flex gap-x-2 items-center md:w-[30%]"
           :to="`/`"
@@ -30,9 +30,9 @@
             <img src="~/assets/img/search.svg" alt="" />
           </div>
         </div>
-        <div class="max-md:hidden flex gap-x-0 items-center md:w-[30%]">
+        <div class="flex items-center md:w-[30%]">
           <div
-            class="py-[3px] px-4 hover:bg-gray-50 grid place-items-center rounded-full cursor-pointer h-10 font-semibold transition-all ease"
+            class="py-[3px] max-md:hidden px-4 hover:bg-gray-50 grid place-items-center rounded-full cursor-pointer h-10 font-semibold transition-all ease"
           >
             <span class="text-sm">Penuhi kebutuhan anda</span>
           </div>
