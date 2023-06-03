@@ -4,7 +4,7 @@
       <Navbar />
     </header>
     <main class="min-h-screen">
-      <section class="relative mt-5 md:px-[115px] px-3">
+      <section class="relative mt-5 md:px-[115px] px-5">
         <div class="mt-3">
           <p class="text-2xl font-semibold">{{ data?.title }}</p>
         </div>
@@ -75,24 +75,24 @@
             <img
               :src="data?.thumbnail"
               alt=""
-              class="w-full aspect-video object-cover"
+              class="w-full md:aspect-video aspect-square object-cover"
             />
           </div>
           <div v-if="data.images" class="md:w-1/2 md:pl-1 md:grid md:gap-2 grid-cols-2 max-md:flex" >
             <img
               :src="data?.thumbnail"
               alt=""
-              class="md:hidden w-full aspect-video object-cover"
+              class="md:hidden w-full md:aspect-video aspect-square object-cover"
             />
             <img
               :src="data?.images[0] || data?.thumbnail"
               alt=""
-              class="w-full aspect-video object-cover"
+              class="w-full md:aspect-video aspect-square object-cover"
             />
             <img
               :src="data?.images[1] || data?.thumbnail"
               alt=""
-              class="w-full aspect-video object-cover"
+              class="w-full md:aspect-video aspect-square object-cover"
             />
             <img
               :src="data?.images[2] || data?.thumbnail"
@@ -108,7 +108,7 @@
         </div>
       </section>
       <section
-        class="mt-8 grid md:grid-cols-12 grid-cols-1 gap-16 md:px-[115px] px-3 relative"
+        class="mt-8 grid md:grid-cols-12 grid-cols-1 gap-16 md:px-[115px] px-5 relative"
       >
         <div class="md:col-span-7">
           <div
@@ -326,10 +326,10 @@ export default {
               this.data.price * (this.data.discountPercentage / 100),
           };
           // CEK KESAMAAN DATA BARANG
-          const isAvailable = carts.some(cart => cart.id == newData.id)
+          const isAvailable = carts.some(cart => cart.id == newData.id && cart.userId == newData.userId)
           if (isAvailable) {
             for (let i = 0; i < carts.length; i++) {
-              if (newData.id == carts[i].id) {
+              if (newData.userId == carts[i].userId && newData.id == carts[i].id) {
                 carts[i].quantity += newData.quantity
                 localStorage.setItem("carts", JSON.stringify(carts));
                 alert('Barang sudah ada, kuantitas telah ditambahkan')
@@ -360,23 +360,23 @@ export default {
 <style scope>
 .image-swipe::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-	background-color: #F5F5F5; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    background-color: #F5F5F5; 
 }
 
 .image-swipe::-webkit-scrollbar
 {
   height: 12px;
-	width: 10px;
-	background-color: #F5F5F5;
+    width: 10px;
+    background-color: #F5F5F5;
 }
 
 .image-swipe::-webkit-scrollbar-thumb
 {
   height: 4px;
-	border-radius: 10px;
-	background-color: #FFF;
-	background-image: -webkit-linear-gradient(right,
+    border-radius: 10px;
+    background-color: #FFF;
+    background-image: -webkit-linear-gradient(right,
   #FF5F5C 0%,
   #EF5A5F 50%,
   #EF5A5F 51%,

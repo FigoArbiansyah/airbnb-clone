@@ -1,6 +1,28 @@
 <template>
+  <div class="lg:col-span-4 md:col-span-2 col-span-1">
+    <div class="mt-3 flex justify-center max-md:px-5">
+      <div class="py-4 px-3 border rounded-xl flex items-center">
+        <div class="flex max-md:flex-col">
+          <p class="font-semibold pr-4 md:border-r border-gray-300">
+            Tampilkan harga total
+          </p>
+          <p class="text-gray-500 md:pl-4">Termasuk semua biaya, setelah diskon</p>
+        </div>
+        <slot>
+          <div
+            class="ml-6 w-14 h-8 rounded-full bg-gray-400 bg-opacity-80 p-[1px] relative hover:bg-[#717171] cursor-pointer transition-all ease duration-300"
+            @click="toggle()"
+          >
+            <div
+              class="absolute top-[2px] left-[2px] w-7 h-7 bg-white rounded-full switch-button transition-all ease duration-300"
+            ></div>
+          </div>
+        </slot>
+      </div>
+    </div>
+  </div>
   <div
-    v-if="datas.length == 0"
+    v-if="datas.length == 0 || !isShow"
     class="absolute flex justify-center w-full pt-28"
   >
     <div class="sound-wave">
@@ -19,8 +41,8 @@
     class="min-h-36 relative group cursor-pointer transition-all ease duration-300"
   >
     <NuxtLink
-      :class="`w-full h-auto overflow-auto flex rounded-xl relative images${data.id} scroll-smooth image-wrapper`"
-      :to="`/${data.id}`"
+      :class="`w-full h-auto overflow-auto flex rounded-xl relative images${data.id} scroll-smooth image-wrapper aspect-square`"
+      :to="`/products/${data.id}`"
     >
       <img :src="data?.thumbnail" alt="" class="aspect-square object-cover" />
       <img
@@ -31,14 +53,21 @@
         class="aspect-square object-cover"
       />
     </NuxtLink>
-    <NuxtLink class="mt-3 flex gap-x-2 justify-between" :to="`/${data.id}`">
+    <NuxtLink class="mt-3 flex gap-x-2 justify-between" :to="`/products/${data.id}`">
       <div>
         <p class="font-semibold">{{ data.title }}</p>
         <p class="text-gray-600">{{ data.brand }}, {{ data.category }}</p>
-        <p class="text-gray-600 -mt-1">{{ data.stock }} pcs</p>
-        <p class="font-semibold">
+        <p v-if="!discountPrice" class="font-semibold">
           Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
         </p>
+        <div v-if="discountPrice">
+          <p class="line-through">
+            Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
+          </p>
+          <p class="font-semibold">
+            Rp {{ ((data.price * 14987 - data.price * 14987 * (data.discountPercentage / 100)).toLocaleString("id-ID")).split(",")[0] }}
+          </p>
+        </div>
       </div>
       <div>
         <p class="flex gap-x-[3px] items-center">
@@ -56,6 +85,7 @@
           </svg>
           <span>{{ data.rating }}</span>
         </p>
+        <p class="text-gray-600 -mt-1">{{ data.stock }} pcs</p>
       </div>
     </NuxtLink>
     <div
@@ -114,7 +144,7 @@ import axios from "axios";
 
 export default {
   data() {
-    return { datas: [], route: useRoute() };
+    return { datas: [], route: useRoute(), isShow: true, discountPrice: false };
   },
   props: ["category", "query"],
   async created() {
@@ -149,12 +179,24 @@ export default {
       const images = document.querySelector(".images" + id);
       images.scrollLeft -= images.offsetWidth;
     },
+    toggle () {
+      document.querySelector(".switch-button").classList.toggle("left-[2px]");
+      document.querySelector(".switch-button").classList.toggle("right-[2px]");
+      this.isShow = !this.isShow
+      setInterval(() => {
+        this.isShow = true
+      }, 500)
+      this.discountPrice = !this.discountPrice
+    }
   },
   mounted() {},
 };
 </script>
 
 <style scope>
+.image-wrapper {
+  scroll-snap-type: x mandatory;
+}
 .image-wrapper::-webkit-scrollbar {
   display: none;
 }

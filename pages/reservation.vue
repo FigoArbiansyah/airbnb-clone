@@ -1,7 +1,7 @@
 <template>
   <div class="main-content">
     <ReservationNavbar />
-    <main class="md:py-20 md:pl-24 md:pr-32 max-md:p-5">
+    <main class="md:py-20 md:pl-24 md:pr-32 max-md:p-5 max-md:overflow-x-hidden">
       <div class="relative">
         <NuxtLink
           :to="`/cart`"
@@ -26,8 +26,8 @@
           Konfirmasikan dan bayar
         </p>
       </div>
-      <div class="md:ml-6 grid grid-cols-2">
-        <div class="pb-8 self-start min-h-[150vh]">
+      <div class="md:ml-6 grid md:grid-cols-2">
+        <div class="pb-8 self-start md:min-h-[150vh]">
           <div class="mt-10 py-4 px-5 border rounded-xl relative">
             <div>
               <p class="font-semibold">Harga lebih rendah</p>
@@ -99,8 +99,8 @@
           </div>
           <RegisterCard />
         </div>
-        <div class="pl-24 mt-10">
-          <div class="py-4 px-5 border rounded-xl sticky top-20">
+        <div class="md:pl-24 md:mt-10 max-md:hidden">
+          <div class="py-4 px-5 border rounded-xl md:sticky md:top-20">
             <div class="flex gap-x-3 mb-6">
               <div class="">
                 <img
@@ -152,6 +152,11 @@
         </div>
       </div>
     </main>
+  </div>
+  <!-- TOTAL FIXED -->
+  <div class="pt-5 flex justify-between font-semibold py-4 fixed bottom-0 bg-white w-full border-t px-4">
+    <p>Total (IDR)</p>
+    <p>Rp. {{ total.toLocaleString() }}</p>
   </div>
 </template>
 

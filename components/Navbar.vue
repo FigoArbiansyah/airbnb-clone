@@ -1,5 +1,5 @@
 <template>
-  <header class="z-50 bg-white md:sticky md:top-0">
+  
     <nav class="py-4 md:px-[35px] px-3 border-y border-gray-200">
       <div class="flex justify-between">
         <NuxtLink
@@ -92,19 +92,20 @@
               </svg>
             </div>
             <div
-              class="absolute top-14 right-0 w-[18rem] bg-white rounded-lg shadow py-3 px-5 border z-[100] cursor-default hidden user-action"
+              class="absolute top-14 right-0 w-[18rem] bg-white rounded-lg shadow border z-[100] cursor-default hidden user-action py-1"
             >
-              <NuxtLink v-if="user == ``" to="/login">Login</NuxtLink>
-              <button v-else @click="handleLogout()">Logout</button>
+              <NuxtLink v-if="user" to="/" class="w-full py-3 px-5 hover:bg-slate-100 block ">Profil</NuxtLink>
+              <NuxtLink v-if="user == ``" to="/login" class="w-full py-3 px-5 hover:bg-slate-100 block ">Login</NuxtLink>
+              <button v-else class="w-full py-3 px-5 hover:bg-slate-100 block text-start" @click="handleLogout()">Logout</button>
             </div>
           </div>
         </div>
       </div>
     </nav>
-    <Category />
-  </header>
+    <slot />
+  <!-- SEARCH MODAL -->
   <div
-    class="fixed left-[50%] -translate-x-[50%] -top-96 md:w-[25rem] w-[18rem] py-4 px-5 bg-white rounded-xl z-50 border shadow search-modal transition-all ease duration-500 scale-0"
+    class="fixed left-[50%] -translate-x-[50%] -top-96 md:w-[35rem] w-[95%] py-4 px-5 bg-white rounded-xl z-50 border shadow search-modal transition-all ease duration-500 scale-0"
   >
     <form class="grid grid-cols-12 gap-x-2" method="get">
       <input
@@ -150,7 +151,8 @@ export default {
   },
   methods: {
     handleLogout() {
-      localStorage.setItem("user", ``);
+      localStorage.setItem("user", `0`);
+      location.reload()
     },
     openSearchModal() {
       const searchModal = document.querySelector(".search-modal");

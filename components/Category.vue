@@ -18,8 +18,9 @@
         <p>{{ category }}</p>
       </NuxtLink>
     </div>
-    <div
-      class="p-2 border rounded-xl text-sm relative w-auto h-12 flex gap-x-2 justify-between items-center cursor-pointer max-md:z-50"
+    <NuxtLink
+      to="/"
+      class="max-md:hidden p-2 border rounded-xl text-sm relative w-auto h-12 flex gap-x-2 justify-between items-center cursor-pointer max-md:z-50"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,9 +37,9 @@
         />
       </svg>
       <p>Filter</p>
-    </div>
+    </NuxtLink>
     <div
-      class="swipe-buttons absolute md:w-[87%] w-full left-0 top-0 h-full flex justify-between md:items-center max-md:-top-8 md:pl-8 max-md:px-4"
+      class="swipe-buttons absolute md:w-[87%] w-full left-0 top-0 h-full flex justify-between md:items-center md:pl-8 max-md:px-4"
     >
       <div class="relative h-full flex items-center btn-prev">
         <button
@@ -137,14 +138,5 @@ onMounted(() => {
 <style scope>
 .scroll-category::-webkit-scrollbar {
   display: none;
-}
-
-.swipe-buttons {
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 1) 1%,
-    rgba(255, 255, 255, 0) 98%,
-    rgba(255, 255, 255, 1) 1%
-  );
 }
 </style>
