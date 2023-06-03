@@ -7,7 +7,7 @@
       <div class="grid text-start gap-y-2 mt-10">
         <input
           type="text"
-          class="py-2 px-3 outline-none border border-gray-200 focus:border-[#EF5A5F] rounded transition-all ease duration-300"
+          class="py-2 px-3 outline-none border border-gray-200 focus:border-[#EF5A5F] rounded transition-all ease duration-300 w-full"
           v-model="username"
           placeholder="Username"
           required
@@ -16,7 +16,7 @@
       <div class="mt-3 grid text-start gap-y-2">
         <input
           type="password"
-          class="py-2 px-3 outline-none border border-gray-200 focus:border-[#EF5A5F] rounded transition-all ease duration-300"
+          class="py-2 px-3 outline-none border border-gray-200 focus:border-[#EF5A5F] rounded transition-all ease duration-300 w-full"
           v-model="password"
           placeholder="Password"
           required
