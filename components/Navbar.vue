@@ -17,12 +17,13 @@
           class="flex max-md:flex-col max-md:items-start items-center rounded-full py-2 pl-2 pr-2 shadow border font-[500] cursor-pointer hover:shadow-lg transition-all ease max-md:w-full relative"
           @click="openSearchModal()"
         >
-          <p class="px-4 md:border-r border-gray-300">Aksesoris</p>
+          <p class="px-4 md:border-r border-gray-300 max-md:hidden">Aksesoris</p>
           <div class="flex max-md:gap-x-2 max-md:pl-4 max-md:pr-6">
-            <p class="md:px-4 md:border-r border-gray-300 max-md:font-light">
+            <p class="md:px-4 md:border-r border-gray-300 max-md:font-light max-md:hidden">
               Perhiasan
             </p>
-            <p class="md:px-4 font-light">Cari barang</p>
+            <p class="md:px-4 font-light max-md:hidden">Cari barang</p>
+            <p class="md:px-4 font-light md:hidden">Cari</p>
           </div>
           <div
             class="w-7 h-7 p-1.5 grid place-items-center rounded-full bg-[#ff5a5f] max-md:absolute right-4 max-md:top-[50%] max-md:-translate-y-[50%]"
