@@ -49,8 +49,11 @@
               </p>
               <div>
                 <div class="flex items-center mt-3 justify-start">
-                  <div class="p-2 text-xl cursor-pointer" @click="data.quantity -= 1">-</div>
-                  <div class="w-12">
+                  <button class="p-2 text-xl cursor-pointer" @click="data.quantity -= 1" :disabled="data.quantity == 1 ? true : false">-</button>
+                  <div class="w-12" v-if="data.quantity == 0 || data.quantity == 1 || data.quantity == ``">
+                    <input type="number" value="1" class="pl-4 w-full">
+                  </div>
+                  <div class="w-12" v-else>
                     <input type="number" v-model="data.quantity" class="pl-4 w-full">
                   </div>
                   <div class="p-2 text-xl cursor-pointer" @click="data.quantity += 1">+</div>
@@ -77,6 +80,12 @@
                     :class="`py-1 px-3 hover:bg-[#FF5F5C] rounded-lg hover:text-white urungkan${data.id} hidden transition-all ease duration-300`"
                   >
                     <p class="">Urungkan</p>
+                  </button>
+                  <button
+                    @click="deleteButton(data.id)"
+                    :class="`py-1 px-3 border border-[#FF5F5C] rounded-lg text-[#FF5F5C] hover:bg-[#FF5F5C] hover:text-white hapus${data.id} transition-all ease duration-300`"
+                  >
+                    <p class="">Hapus</p>
                   </button>
                 </div>
               </div>
@@ -129,8 +138,11 @@
               </p>
               <div>
                 <div class="flex items-center mt-3 justify-start">
-                  <div class="p-2 text-xl cursor-pointer" @click="data.quantity -= 1">-</div>
-                  <div class="w-12">
+                  <div class="p-2 text-xl cursor-pointer" @click="data.quantity -= 1" :disabled="data.quantity == 1 ? true : false">-</div>
+                  <div class="w-12" v-if="data.quantity == 0 || data.quantity == 1 || data.quantity == ``">
+                    <input type="number" value="1" class="pl-4 w-full">
+                  </div>
+                  <div class="w-12" v-else>
                     <input type="number" v-model="data.quantity" class="pl-4 w-full">
                   </div>
                   <div class="p-2 text-xl cursor-pointer" @click="data.quantity += 1">+</div>
@@ -157,6 +169,12 @@
                     :class="`py-1 px-3 hover:bg-[#FF5F5C] rounded-lg hover:text-white urungkan${data.id} hidden transition-all ease duration-300`"
                   >
                     <p class="">Urungkan</p>
+                  </button>
+                  <button
+                    @click="deleteButton(data.id)"
+                    :class="`py-1 px-3 border border-[#FF5F5C] rounded-lg text-[#FF5F5C] hover:bg-[#FF5F5C] hover:text-white hapus${data.id} transition-all ease duration-300`"
+                  >
+                    <p class="">Hapus</p>
                   </button>
                 </div>
               </div>
@@ -244,6 +262,14 @@ export default {
       localStorage.setItem("products", JSON.stringify(products));
       document.querySelector(".pilih" + id).classList.remove("hidden");
       document.querySelector(".urungkan" + id).classList.add("hidden");
+    },
+    deleteButton(id) {
+      // const products = JSON.parse(localStorage.getItem("products"));
+      // const selectedData = products.filter((data) => data.id != id)
+      // localStorage.setItem("products", JSON.stringify([]))
+      // products.push(selectedData)
+      // localStorage.setItem("products", JSON.stringify(selectedData))
+      alert("Fitur belum dijalankan")
     },
     handlePlus(qty) {
       return qty += 1
