@@ -179,12 +179,13 @@ export default {
       document.querySelector(".urungkan" + id).classList.add("hidden");
     },
     deleteButton(id) {
-      // const products = JSON.parse(localStorage.getItem("products"));
-      // const selectedData = products.filter((data) => data.id != id)
-      // localStorage.setItem("products", JSON.stringify([]))
-      // products.push(selectedData)
-      // localStorage.setItem("products", JSON.stringify(selectedData))
-      alert("Fitur belum dijalankan")
+      const user = JSON.parse(localStorage.getItem("user"));
+      const carts = JSON.parse(localStorage.getItem("carts"))
+      localStorage.setItem("carts", JSON.stringify([]))
+      const datas = carts.filter((data) => !(data.id == id && data.userId == user.id));
+      localStorage.setItem("carts", JSON.stringify(datas))
+      this.filterCarts = datas
+      console.log(datas)
     },
     handlePlus(qty) {
       return qty += 1

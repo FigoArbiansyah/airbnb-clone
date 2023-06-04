@@ -115,22 +115,22 @@ function scrollToPrev() {
 }
 
 onMounted(() => {
+  const navScroll = () => {
+    const nav = document.querySelector(".nav-category");
+    if (
+      document.documentElement.scrollTop > 175 ||
+      document.body.scrollTop > 175
+    ) {
+      nav.classList.add("border-b");
+      nav.classList.add("shadow-sm");
+    } else {
+      nav.classList.remove("border-b");
+      nav.classList.remove("shadow-sm");
+    }
+    window.addEventListener("scroll", navScroll);
+  };
+  navScroll();
   if (process.client) {
-    const navScroll = () => {
-      const nav = document.querySelector(".nav-category");
-      if (
-        document.documentElement.scrollTop > 175 ||
-        document.body.scrollTop > 175
-      ) {
-        nav.classList.add("border-b");
-        nav.classList.add("shadow-sm");
-      } else {
-        nav.classList.remove("border-b");
-        nav.classList.remove("shadow-sm");
-      }
-      window.addEventListener("scroll", navScroll);
-    };
-    navScroll();
   }
 });
 </script>
