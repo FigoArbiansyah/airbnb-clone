@@ -1,6 +1,6 @@
 <template>
   <section class="min-h-screen flex justify-center items-center">
-    <div class="md:w-[25rem] w-[70%] py-8 px-5 text-center border bg-white shadow-xl rounded-lg">
+    <div class="md:w-[25rem] w-[90%] py-8 px-5 text-center border bg-white shadow-xl rounded-lg">
       <NuxtLink to="/" class="w-20 inline-block">
         <img src="~/assets/img/red-logo.svg" class="mx-auto w-20 h-20" alt="" />
       </NuxtLink>
