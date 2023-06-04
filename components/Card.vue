@@ -39,15 +39,15 @@
     class="min-h-36 relative group cursor-pointer transition-all ease duration-300"
   >
     <NuxtLink
-      :class="`w-full h-auto overflow-auto flex rounded-xl relative images${data.id} scroll-smooth image-wrapper aspect-square`"
+      :class="`w-full h-auto overflow-auto flex rounded-xl relative images${data.id} scroll-smooth image-wrapper`"
       :to="`/products/${data.id}`"
     >
-      <img :src="data?.thumbnail" alt="" class="aspect-square object-cover w-full" />
+      <img :src="data?.thumbnail" alt="" class="aspect-square object-cover w-full image-products" />
       <img
         v-for="images in data.images"
         :src="images"
         alt=""
-        class="aspect-square object-cover w-full"
+        class="aspect-square object-cover w-full image-products"
       />
     </NuxtLink>
     <NuxtLink class="mt-3 flex gap-x-2 justify-between max-md:flex-col" :to="`/products/${data.id}`">
@@ -255,5 +255,8 @@ export default {
 .sound-wave span:nth-child(6) {
   left: 55px;
   animation-delay: 1s;
+}
+.image-products {
+  aspect-ratio: 1/1;
 }
 </style>
