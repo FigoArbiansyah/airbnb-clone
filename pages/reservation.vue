@@ -1,7 +1,7 @@
 <template>
   <div class="main-content">
     <ReservationNavbar />
-    <main class="md:py-20 md:pl-24 md:pr-32 max-md:p-5 max-md:overflow-x-hidden">
+    <main class="md:py-20 md:pl-24 md:pr-32 max-md:p-5 max-md:pb-32 max-md:overflow-x-hidden">
       <div class="relative">
         <NuxtLink
           :to="`/cart`"
@@ -22,7 +22,7 @@
             />
           </svg>
         </NuxtLink>
-        <p class="text-3xl font-semibold relative left-6">
+        <p class="text-3xl font-semibold relative left-6 max-md:text-2xl">
           Konfirmasikan dan bayar
         </p>
       </div>
