@@ -105,7 +105,9 @@
     </nav>
     <slot />
   <!-- SEARCH MODAL -->
-  <div
+  <form
+    v-on:submit="e.preventDefault()"
+    :action="`/search/${question}`"
     class="fixed left-[50%] -translate-x-[50%] -top-96 md:w-[35rem] w-[95%] py-4 px-5 bg-white rounded-xl z-50 border shadow search-modal transition-all ease duration-500 scale-0"
   >
     <div class="grid grid-cols-12 gap-x-2">
@@ -139,7 +141,7 @@
         <img src="~/assets/img/search.svg" alt="" />
       </NuxtLink>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
