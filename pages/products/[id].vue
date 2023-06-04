@@ -169,26 +169,27 @@
         >
           <div>
             <p v-if="data.discountPercentage">
-              <span class="text-xl font-semibold text-gray-700 line-through"
+              <span class="md:text-xl text-lg font-semibold text-gray-500 line-through"
                 >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
               </span>
-              <span class="text-xl font-semibold float-right">
+              <br class="md:hidden" />
+              <span class="md:text-xl text-lg font-semibold md:float-right">
                 Rp
                 {{
                   (
                     data.price * 14987 -
                     data.price * 14987 * (data.discountPercentage / 100)
-                  ).toLocaleString("id-ID")
+                  ).toLocaleString("id-ID").split(",")[0]
                 }}</span
               >
             </p>
             <p v-else>
-              <span class="text-xl font-semibold text-gray-700"
+              <span class="md:text-xl text-lg font-semibold text-gray-700"
                 >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}</span
               >
             </p>
           </div>
-          <div class="flex items-center gap-x-1">
+          <div class="flex items-center gap-x-1 mt-2">
             <svg
               width="14"
               height="14"
@@ -235,7 +236,7 @@
               </div>
             </button>
             <p class="text-gray-600 mt-3">Anda belum dikenakan biaya</p>
-            <div class="mt-5 flex justify-between pb-5 border-b">
+            <div class="mt-5 flex justify-between max-md:flex-col max-md:items-start gap-y-2 pb-5 border-b">
               <p class="underline">
                 Rp
                 {{
@@ -257,7 +258,7 @@
                 }}
               </p>
             </div>
-            <div class="pt-5 flex justify-between text-black">
+            <div class="pt-5 flex justify-between max-md:flex-col max-md:items-start gap-y-2 text-black">
               <p class="font-semibold">Total</p>
               <p class="font-semibold">
                 Rp
@@ -319,6 +320,7 @@ export default {
             title: this.data.title,
             price: this.data.price,
             quantity: this.qty,
+            stock: this.data.stock,
             total: this.data.price * this.qty,
             discountPercentage: this.data.discountPercentage,
             discountedPrice:

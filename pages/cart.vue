@@ -50,13 +50,16 @@
               <div>
                 <div class="flex items-center mt-3 justify-start">
                   <button class="p-2 text-xl cursor-pointer" @click="data.quantity -= 1" :disabled="data.quantity == 1 ? true : false">-</button>
-                  <div class="w-12" v-if="data.quantity == 0 || data.quantity == 1 || data.quantity == ``">
+                  <!-- <div class="w-12" v-if="data.quantity == 0 || data.quantity == 1 || data.quantity == ``">
                     <input type="number" value="1" class="pl-4 w-full">
-                  </div>
-                  <div class="w-12" v-else>
+                  </div> -->
+                  <!-- <div class="w-12">
                     <input type="number" v-model="data.quantity" class="pl-4 w-full">
+                  </div> -->
+                  <div class="w-12">
+                    <p class="pl-4 w-full">{{data.quantity}}</p>
                   </div>
-                  <div class="p-2 text-xl cursor-pointer" @click="data.quantity += 1">+</div>
+                  <div :class="`p-2 text-xl cursor-pointer ${data.quantity >= data.stock ? 'hidden' : 'inline'}`" @click="data.quantity += 1">+</div>
                 </div>
                 <div class="flex gap-x-3">
                   <button

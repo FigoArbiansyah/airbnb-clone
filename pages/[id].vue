@@ -169,10 +169,10 @@
         >
           <div>
             <p v-if="data.discountPercentage">
-              <span class="text-xl font-semibold text-gray-700 line-through"
+              <span class="md:text-xl text-lg font-semibold text-gray-700 line-through"
                 >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
               </span>
-              <span class="text-xl font-semibold float-right">
+              <span class="md:text-xl text-lg font-semibold float-right">
                 Rp
                 {{
                   (
@@ -183,7 +183,7 @@
               >
             </p>
             <p v-else>
-              <span class="text-xl font-semibold text-gray-700"
+              <span class="md:text-xl text-lg font-semibold text-gray-700"
                 >Rp {{ (data.price * 14987).toLocaleString("id-ID") }}</span
               >
             </p>
