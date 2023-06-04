@@ -1,6 +1,6 @@
 <template>
   <div class="lg:col-span-4 md:col-span-2 col-span-2">
-    <div class="mt-3 flex justify-center max-md:px-5">
+    <div class="mt-3 flex justify-center">
       <div class="py-4 px-3 border rounded-xl flex items-center">
         <div class="flex max-md:flex-col">
           <p class="font-semibold pr-4 md:border-r border-gray-300">
@@ -21,7 +21,7 @@
   </div>
   <div
     v-if="datas.length == 0 || !isShow"
-    class="absolute flex justify-center w-full pt-28"
+    class="absolute flex justify-center w-full md:pt-28 pt-48"
   >
     <div class="sound-wave">
       <span></span>
@@ -87,7 +87,7 @@
       </div>
     </NuxtLink>
     <div
-      class="absolute w-[87%] left-0 md:top-[40%] max-md:top-[38%] max-md:-translate-y-[38%] h-0 hidden group-hover:flex justify-between items-center pl-8 transition-all ease duration-300"
+      class="absolute w-[87%] left-0 md:top-[40%] max-md:top-[30%] max-md:-translate-y-[30%] h-0 hidden group-hover:flex justify-between items-center pl-8 transition-all ease duration-300"
     >
       <div class="relative h-full flex items-center">
         <button

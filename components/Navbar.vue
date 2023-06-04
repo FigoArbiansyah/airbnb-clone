@@ -108,7 +108,7 @@
   <div
     class="fixed left-[50%] -translate-x-[50%] -top-96 md:w-[35rem] w-[95%] py-4 px-5 bg-white rounded-xl z-50 border shadow search-modal transition-all ease duration-500 scale-0"
   >
-    <form class="grid grid-cols-12 gap-x-2" method="get">
+    <div class="grid grid-cols-12 gap-x-2">
       <input
         type="text"
         class="col-span-10 px-3 py-2 outline-none border-b border-white focus:border-gray-300"
@@ -138,7 +138,7 @@
       >
         <img src="~/assets/img/search.svg" alt="" />
       </NuxtLink>
-    </form>
+    </div>
   </div>
 </template>
 

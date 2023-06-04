@@ -9,7 +9,7 @@
     <div class="min-h-screen">
       <!-- <TotalPrice /> -->
       <section
-        class="relative mt-5 md:px-[38px] px-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-10"
+        class="relative mt-5 md:px-[38px] px-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-x-6 gap-y-10"
       >
         <Card :query="query" :category="null" />
       </section>
