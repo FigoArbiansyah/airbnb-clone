@@ -85,24 +85,31 @@
               class="md:hidden w-full md:aspect-video aspect-square max-md:h-full object-cover"
             />
             <img
+              v-if="data?.images?.lentgh != 0"
+              v-for="image in data?.images"
+              :src="image"
+              alt=""
+              class="w-full md:aspect-video aspect-square max-md:h-full object-cover md:hidden"
+            />
+            <img
               :src="data?.images[0] || data?.thumbnail"
               alt=""
-              class="w-full md:aspect-video aspect-square max-md:h-full object-cover"
+              class="w-full md:aspect-video aspect-square max-md:h-full object-cover max-md:hidden"
             />
             <img
               :src="data?.images[1] || data?.thumbnail"
               alt=""
-              class="w-full md:aspect-video aspect-square max-md:h-full object-cover"
+              class="w-full md:aspect-video aspect-square max-md:h-full object-cover max-md:hidden"
             />
             <img
               :src="data?.images[2] || data?.thumbnail"
               alt=""
-              class="w-full aspect-video object-cover"
+              class="w-full aspect-video object-cover max-md:hidden"
             />
             <img
               :src="data?.images[3] || data?.thumbnail"
               alt=""
-              class="w-full aspect-video object-cover"
+              class="w-full aspect-video object-cover max-md:hidden"
             />
           </div>
         </div>
@@ -112,21 +119,14 @@
       >
         <div class="md:col-span-7">
           <div
-            class="flex gap-2 w-full justify-between items-center border-b pb-5"
+            class="w-full border-b pb-5"
           >
             <div>
               <p class="text-2xl font-semibold text-gray-700">
                 {{ data.title }}
               </p>
-              <p class="text-gray-500">
-                <NuxtLink
-                  :to="`/category/${data.category}`"
-                  class="underline"
-                  >{{ data.category }}</NuxtLink
-                >
-                .
-                <span>{{ data.brand }}</span>
-              </p>
+              <div class="mt-4 py-1 px-3 bg-[#FF5F5C] text-white w-auto inline-block rounded">{{data.discountPercentage}}%</div>
+              
             </div>
             <!-- <div>
               <img
@@ -136,32 +136,91 @@
               />
             </div> -->
           </div>
-          <div class="mt-5 pb-5 border-b">
-            <div class="flex items-center gap-x-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-10 h-10"
+          <div class="mt-5">
+            <table>
+              <tr>
+                <td>Kategori</td>
+                <td>&nbsp; : &nbsp;</td>
+                <td>
+                  <NuxtLink
+                  :to="`/category/${data.category}`"
+                  class="underline"
+                  >{{ data.category }}</NuxtLink>
+                </td>
+              </tr>
+              <tr>
+                <td>Brand</td>
+                <td>&nbsp; : &nbsp;</td>
+                <td>{{data.brand}}</td>
+              </tr>
+              <tr>
+                <td>Tersisa</td>
+                <td>&nbsp; : &nbsp;</td>
+                <td>{{data.stock}} pcs</td>
+              </tr>
+            </table>
+            <!-- <p class="text-gray-900">
+              Kategori: 
+              <NuxtLink
+                :to="`/category/${data.category}`"
+                class="underline"
+                >{{ data.category }}</NuxtLink
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 14.25l6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185zM9.75 9h.008v.008H9.75V9zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 4.5h.008v.008h-.008V13.5zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                />
-              </svg>
-              <div class="md:w-10/12 w-[80%]">
-                <p class="text-lg font-semibold">
-                  {{ data.discountPercentage }}%
-                </p>
-                <p class="text-gray-500 text-sm mt-1.5">Diskon.</p>
+            </p>
+            <p>Brand: {{ data.brand }}</p> -->
+            <p class="text-gray-800 mt-2">{{ data?.description }}.</p>
+            <p class="text-gray-800 mt-2">Produk ini merupakan hasil inovasi terbaru yang dirancang untuk memenuhi kebutuhan dan keinginan konsumen modern. Dengan menggabungkan teknologi canggih, desain estetika yang menawan, dan kinerja yang luar biasa, produk ini hadir sebagai solusi yang sempurna untuk memudahkan kehidupan sehari-hari.
+            </p>
+            <div v-if="deskripsiShow" class="mb-2">
+              <p class="text-gray-800 mt-2">Produk ini merupakan hasil inovasi terbaru yang dirancang untuk memenuhi kebutuhan dan keinginan konsumen modern. Dengan menggabungkan teknologi canggih, desain estetika yang menawan, dan kinerja yang luar biasa, produk ini hadir sebagai solusi yang sempurna untuk memudahkan kehidupan sehari-hari.
+              </p>
+              <p class="text-gray-800 mt-2">Produk ini menghadirkan fitur yang sangat berguna dan dapat digunakan dalam berbagai situasi. Dengan menggunakan produk ini, Anda dapat meningkatkan produktivitas, efisiensi, dan kenyamanan. Desain yang ergonomis dan intuitif membuat penggunaan produk ini menjadi mudah dan menyenangkan.
+              </p>
+              <p class="text-gray-800 mt-2">Kualitas produk ini sangatlah tinggi, dengan bahan-bahan terbaik dan konstruksi yang kokoh, sehingga memberikan daya tahan yang luar biasa. Produk ini juga dirancang untuk memberikan performa yang optimal dan dapat diandalkan dalam jangka panjang.
+              </p>
+              <p class="text-gray-800 mt-2">Dalam produk ini, fokus utama adalah pada keamanan dan keandalan. Setiap detail dan fitur produk ini telah dirancang dengan teliti untuk memastikan penggunaan yang aman dan terjamin.
+              </p>
+              <p class="text-gray-800 mt-2">Produk ini hadir dengan beragam pilihan dan variasi, sehingga Anda dapat memilih yang sesuai dengan kebutuhan dan gaya hidup Anda. Dengan berbagai opsi yang tersedia, produk ini dapat memenuhi kebutuhan semua kalangan, mulai dari profesional hingga pengguna pribadi.
+              </p>
+              <p class="text-gray-800 mt-2">Dengan keunggulan dan keistimewaannya, produk ini menjadi pilihan yang sempurna bagi mereka yang menginginkan pengalaman terbaik dalam penggunaan produk yang dapat memenuhi harapan dan memberikan nilai lebih.
+              </p>
+            </div>
+            <p class="underline mt-2 cursor-pointer mb-3" @click="deskripsiShow = !deskripsiShow"><span v-if="!deskripsiShow">Lihat selengkapnya</span><span v-else>Lihat lebih sedikit</span></p>
+            <div class="text-2xl font-semibold text-gray-700 py-4 border-t">
+              Ulasan
+            </div>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div v-for="data in ulasan">
+                <div class="flex gap-x-3 items-center">
+                  <div>
+                    <img :src="data.img" class="w-20 aspect-square rounded-full object-cover border" alt="">
+                  </div>
+                  <div>
+                    <p class="font-semibold">{{ data.name }}</p>
+                    <div class="flex items-center gap-x-1">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 8 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4 0L4.89806 2.76393H7.80423L5.45308 4.47214L6.35114 7.23607L4 5.52786L1.64886 7.23607L2.54692 4.47214L0.195774 2.76393H3.10194L4 0Z"
+                          fill="#000"
+                        />
+                      </svg>
+                      <p class="text-sm">
+                        <span>{{ data.rate }}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="text-gray-700">{{ data.message }}</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="mt-5">
-            <p class="text-gray-800">{{ data?.description }}.</p>
           </div>
         </div>
         <div
@@ -290,6 +349,41 @@ export default {
         userId: 1,
         products: [{ id: this.$route.params.id, quantity: this.qty }],
       },
+      deskripsiShow: false,
+      ulasan: [
+        {
+          id: 1,
+          img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+          name: "Deddy Corbuzier",
+          rate: 4.5,
+          message: "Saya selalu menggunakan barang ini pada saat podcast dan berkumpul bersama keluarga. Direkomendasikan!",
+          date: "13-04-2023",
+        },
+        {
+          id: 2,
+          img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+          name: "Agnes Monica",
+          rate: 4.5,
+          message: "Bahkan saat saya sedang di panggung, saya selalu teringat dengan barang ini!",
+          date: "13-04-2023",
+        },
+        {
+          id: 3,
+          img: "https://images.unsplash.com/photo-1531727991582-cfd25ce79613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+          name: "Rossa",
+          rate: 4.5,
+          message: "Ini barang yang cantik dan saya menyukainya!",
+          date: "13-04-2023",
+        },
+        {
+          id: 4,
+          img: "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+          name: "Adele",
+          rate: 4.5,
+          message: "Barang nya bagus dan berfungsi normal, harus banget buat langganan disini!",
+          date: "13-04-2023",
+        },
+      ]
     };
   },
   async created() {
@@ -317,6 +411,7 @@ export default {
           const newData = {
             userId: user?.id,
             id: this.$route.params.id,
+            img: this.data.thumbnail,
             title: this.data.title,
             price: this.data.price,
             quantity: this.qty,

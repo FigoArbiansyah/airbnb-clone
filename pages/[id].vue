@@ -316,6 +316,7 @@ export default {
           const newData = {
             userId: user?.id,
             id: this.$route.params.id,
+            img: this.data.thumbnail,
             title: this.data.title,
             price: this.data.price,
             quantity: this.qty,

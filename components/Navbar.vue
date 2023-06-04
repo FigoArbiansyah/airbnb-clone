@@ -109,10 +109,10 @@
     :action="`/search/${question}`"
     class="fixed left-[50%] -translate-x-[50%] -top-96 md:w-[35rem] w-[95%] py-4 px-5 bg-white rounded-xl z-50 border shadow search-modal transition-all ease duration-500 scale-0"
   >
-    <div class="grid grid-cols-12 gap-x-2">
+    <div class="grid grid-cols-12 gap-x-2 max-md:items">
       <input
         type="text"
-        class="col-span-10 px-3 py-2 outline-none border-b border-white focus:border-gray-300"
+        class="col-span-10 max-md:col-span-9 px-3 py-2 outline-none border-b border-white focus:border-gray-300"
         placeholder="Cari barang"
         v-model="question"
         name="q"
@@ -135,7 +135,7 @@
       </button>
       <NuxtLink
         :to="`/search/${question}`"
-        class="w-7 h-7 p-1.5 grid place-items-center rounded-full bg-[#ff5a5f] self-center"
+        class="w-7 h-7 p-1.5 grid place-items-center rounded-full bg-[#ff5a5f] self-center max-md:col-span-2 max-md:mx-auto"
       >
         <img src="~/assets/img/search.svg" alt="" />
       </NuxtLink>
