@@ -4,11 +4,11 @@
       <Navbar />
     </header>
     <main class="min-h-screen">
-      <section class="relative mt-5 md:px-[115px] px-5">
-        <div class="mt-3">
+      <section class="relative md:mt-5 md:px-[115px]">
+        <div class="mt-3 max-md:hidden">
           <p class="text-2xl font-semibold">{{ data?.title }}</p>
         </div>
-        <div class="flex justify-between items-center mt-2 w-full">
+        <div class="flex justify-between items-center mt-2 w-full max-md:hidden">
           <div class="flex items-center gap-x-1">
             <svg
               width="14"
@@ -70,29 +70,29 @@
             </div>
           </div>
         </div>
-        <div class="mt-6 md:flex md:rounded-xl overflow-hidden max-md:overflow-x-auto image-swipe">
+        <div class="md:mt-6 md:flex md:rounded-xl overflow-hidden max-md:overflow-x-auto image-swipe">
           <div class="md:w-1/2 md:pr-1 max-md:hidden">
             <img
               :src="data?.thumbnail"
               alt=""
-              class="w-full md:aspect-video aspect-square object-cover"
+              class="w-full md:aspect-video aspect-square max-md:h-full object-cover"
             />
           </div>
           <div v-if="data.images" class="md:w-1/2 md:pl-1 md:grid md:gap-2 grid-cols-2 max-md:flex" >
             <img
               :src="data?.thumbnail"
               alt=""
-              class="md:hidden w-full md:aspect-video aspect-square object-cover"
+              class="md:hidden w-full md:aspect-video aspect-square max-md:h-full object-cover"
             />
             <img
               :src="data?.images[0] || data?.thumbnail"
               alt=""
-              class="w-full md:aspect-video aspect-square object-cover"
+              class="w-full md:aspect-video aspect-square max-md:h-full object-cover"
             />
             <img
               :src="data?.images[1] || data?.thumbnail"
               alt=""
-              class="w-full md:aspect-video aspect-square object-cover"
+              class="w-full md:aspect-video aspect-square max-md:h-full object-cover"
             />
             <img
               :src="data?.images[2] || data?.thumbnail"
