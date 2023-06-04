@@ -42,16 +42,15 @@
       :class="`w-full h-auto overflow-auto flex rounded-xl relative images${data.id} scroll-smooth image-wrapper aspect-square`"
       :to="`/products/${data.id}`"
     >
-      <img :src="data?.thumbnail" alt="" class="aspect-square object-cover" />
+      <img :src="data?.thumbnail" alt="" class="aspect-square object-cover w-full" />
       <img
         v-for="images in data.images"
         :src="images"
-        :key="images"
         alt=""
-        class="aspect-square object-cover"
+        class="aspect-square object-cover w-full"
       />
     </NuxtLink>
-    <NuxtLink class="mt-3 flex gap-x-2 justify-between" :to="`/products/${data.id}`">
+    <NuxtLink class="mt-3 flex gap-x-2 justify-between max-md:flex-col" :to="`/products/${data.id}`">
       <div>
         <p class="font-semibold">{{ data.title }}</p>
         <p class="text-gray-600">{{ data.brand }}, {{ data.category }}</p>
@@ -67,7 +66,7 @@
           </p>
         </div>
       </div>
-      <div>
+      <div class="max-md:flex justify-between items-center">
         <p class="flex gap-x-[3px] items-center">
           <svg
             width="14"
@@ -83,11 +82,11 @@
           </svg>
           <span>{{ data.rating }}</span>
         </p>
-        <p class="text-gray-600 -mt-1">{{ data.stock }} pcs</p>
+        <p class="text-gray-600 md:-mt-1">{{ data.stock }} pcs</p>
       </div>
     </NuxtLink>
     <div
-      class="absolute w-[87%] left-0 md:top-[40%] max-md:top-[30%] max-md:-translate-y-[30%] h-0 hidden group-hover:flex justify-between items-center pl-8 transition-all ease duration-300"
+      class="absolute w-[87%] left-0 md:top-[40%] max-md:top-[30%] max-md:-translate-y-[30%] h-0 hidden group-hover:flex justify-between items-center pl-8 max-md:pr-4 transition-all ease duration-300"
     >
       <div class="relative h-full flex items-center">
         <button
