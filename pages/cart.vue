@@ -49,7 +49,15 @@
               </p> -->
               <div>
                 <div class="flex items-center mt-3 justify-start">
-                  <button class="p-2 text-xl cursor-pointer" @click="data.quantity -= 1" :disabled="data.quantity == 1 ? true : false">-</button>
+                  <button class="p-2 text-xl cursor-pointer" @click="data.quantity -= 1; changeQty(
+                        data.id,
+                        data.title,
+                        data.price,
+                        data.quantity,
+                        data.total,
+                        data.discountPercentage,
+                        data.discountedPrice
+                      )" :disabled="data.quantity == 1 ? true : false">-</button>
                   <!-- <div class="w-12" v-if="data.quantity == 0 || data.quantity == 1 || data.quantity == ``">
                     <input type="number" value="1" class="pl-4 w-full">
                   </div> -->
@@ -59,7 +67,15 @@
                   <div class="w-12">
                     <p class="pl-4 w-full">{{data.quantity}}</p>
                   </div>
-                  <div :class="`p-2 text-xl cursor-pointer ${data.quantity >= data.stock ? 'hidden' : 'inline'}`" @click="data.quantity += 1">+</div>
+                  <div :class="`p-2 text-xl cursor-pointer ${data.quantity >= data.stock ? 'hidden' : 'inline'}`" @click="data.quantity += 1; changeQty(
+                        data.id,
+                        data.title,
+                        data.price,
+                        data.quantity,
+                        data.total,
+                        data.discountPercentage,
+                        data.discountedPrice
+                      )">+</div>
                 </div>
                 <div class="flex gap-x-3">
                   <button
@@ -170,7 +186,7 @@ export default {
       document.querySelector(".urungkan" + id).classList.remove("hidden");
       document.querySelector(".pilih" + id).classList.add("hidden");
       const totalPrice = ((price * 14987 - price * 14987 * (discountPercentage / 100)) * quantity)
-      this.historySelected.push({id: id, total:totalPrice})
+      this.historySelected.push({id: id, quantity, total:totalPrice})
       this.totalPriceAtCart = this.historySelected.reduce((acc, obj) => acc + obj.total, 0);
     },
     cancelButton(id, price) {
@@ -187,13 +203,55 @@ export default {
       document.querySelector(".pilih" + id).classList.remove("hidden");
       document.querySelector(".urungkan" + id).classList.add("hidden");
     },
+    changeQty(
+      id,
+      title,
+      price,
+      quantity,
+      total,
+      discountPercentage,
+      discountedPrice
+    ) {
+      document.querySelector(".urungkan" + id).classList.remove("hidden");
+      document.querySelector(".pilih" + id).classList.add("hidden");
+      const newData = {
+        id,
+        title,
+        price,
+        quantity,
+        total,
+        discountPercentage,
+        discountedPrice,
+      };
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+      products.push(newData);
+      localStorage.setItem("products", JSON.stringify(products));
+      const totalPriceWithOutQty = (price * 14987 - price * 14987 * (discountPercentage / 100))
+      const isAvailable = this.historySelected.some(item => item.id == id)
+      if (isAvailable) {
+        for (let i = 0; i < this.historySelected.length; i++) {
+          if (id == this.historySelected[i].id) {
+            this.historySelected[i].quantity += quantity
+            this.historySelected[i].quantity = quantity
+            const newQty = this.historySelected[i].quantity = quantity
+            const total = totalPriceWithOutQty * newQty
+            this.historySelected[i].total = total
+            this.totalPriceAtCart = this.historySelected.reduce((acc, obj) => acc + obj.total, 0);
+          }
+        }
+      } else {
+        this.historySelected.push({id: id, quantity, total:totalPriceWithOutQty * quantity})
+        console.log(isAvailable)
+        this.totalPriceAtCart = this.historySelected.reduce((acc, obj) => acc + obj.total, 0);
+      }
+    },
     deleteButton(id) {
       const user = JSON.parse(localStorage.getItem("user"));
       const carts = JSON.parse(localStorage.getItem("carts"))
       localStorage.setItem("carts", JSON.stringify([]))
       const datas = carts.filter((data) => !(data.id == id && data.userId == user.id));
       localStorage.setItem("carts", JSON.stringify(datas))
-      this.filterCarts = datas
+      this.filterCarts = datas.filter((p) => p.userId == user.id);
       console.log(datas)
     },
     handlePlus(qty) {
