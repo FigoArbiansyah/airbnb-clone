@@ -136,7 +136,7 @@
               />
             </div> -->
           </div>
-          <div class="mt-5">
+          <div class="mt-5 max-md:pb-64">
             <table>
               <tr>
                 <td>Kategori</td>
@@ -171,7 +171,7 @@
             <p class="text-gray-800 mt-2">{{ data?.description }}.</p>
             <p class="text-gray-800 mt-2">Produk ini merupakan hasil inovasi terbaru yang dirancang untuk memenuhi kebutuhan dan keinginan konsumen modern. Dengan menggabungkan teknologi canggih, desain estetika yang menawan, dan kinerja yang luar biasa, produk ini hadir sebagai solusi yang sempurna untuk memudahkan kehidupan sehari-hari.
             </p>
-            <div v-if="deskripsiShow" class="mb-2">
+            <div v-if="deskripsiShow" @click="deskripsiShow = !deskripsiShow" class="mb-2 cursor-pointer">
               <p class="text-gray-800 mt-2">Produk ini merupakan hasil inovasi terbaru yang dirancang untuk memenuhi kebutuhan dan keinginan konsumen modern. Dengan menggabungkan teknologi canggih, desain estetika yang menawan, dan kinerja yang luar biasa, produk ini hadir sebagai solusi yang sempurna untuk memudahkan kehidupan sehari-hari.
               </p>
               <p class="text-gray-800 mt-2">Produk ini menghadirkan fitur yang sangat berguna dan dapat digunakan dalam berbagai situasi. Dengan menggunakan produk ini, Anda dapat meningkatkan produktivitas, efisiensi, dan kenyamanan. Desain yang ergonomis dan intuitif membuat penggunaan produk ini menjadi mudah dan menyenangkan.
@@ -224,8 +224,20 @@
           </div>
         </div>
         <div
-          class="md:col-span-5 border p-5 rounded-xl sticky top-8 self-start shadow"
+          class="md:col-span-5 md:border p-5 md:rounded-xl md:sticky md:top-8 self-start md:shadow max-md:fixed max-md:bottom-0 max-md:left-0 max-md:w-full max-md:bg-white z-50"
         >
+        <div class="md:hidden flex justify-between max-md:flex-col max-md:items-start gap-y-2 text-black float-right">
+            <p class="font-semibold">
+              Rp
+              {{
+                (
+                  (data.price * 14987 -
+                    data.price * 14987 * (data.discountPercentage / 100)) *
+                  qty
+                ).toLocaleString("id-ID")
+              }}
+            </p>
+          </div>
           <div>
             <p v-if="data.discountPercentage">
               <span class="md:text-xl text-lg font-semibold text-gray-500 line-through"
@@ -248,7 +260,7 @@
               >
             </p>
           </div>
-          <div class="flex items-center gap-x-1 mt-2">
+          <div class="flex items-center gap-x-1 mt-2 max-md:hidden">
             <svg
               width="14"
               height="14"
@@ -294,8 +306,8 @@
                 Pesan
               </div>
             </button>
-            <p class="text-gray-600 mt-3">Anda belum dikenakan biaya</p>
-            <div class="mt-5 flex justify-between max-md:flex-col max-md:items-start gap-y-2 pb-5 border-b">
+            <p class="text-gray-600 mt-3 max-md:hidden">Anda belum dikenakan biaya</p>
+            <div class="mt-5 flex justify-between max-md:flex-col max-md:items-start gap-y-2 pb-5 border-b max-md:hidden">
               <p class="underline">
                 Rp
                 {{
@@ -317,7 +329,7 @@
                 }}
               </p>
             </div>
-            <div class="pt-5 flex justify-between max-md:flex-col max-md:items-start gap-y-2 text-black">
+            <div class="pt-5 flex justify-between max-md:flex-col max-md:items-start max-md:hidden gap-y-2 text-black">
               <p class="font-semibold">Total</p>
               <p class="font-semibold">
                 Rp

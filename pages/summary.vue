@@ -189,7 +189,7 @@ export default {
         }
         this.message = "Saya ingin membeli " + this.products.map(product => {
           return product.title
-        }) + " dengan total harga Rp. " + this.total.toLocaleString().split(".")[0]
+        }) + " dengan total harga Rp. " + this.total.toLocaleString()
       }
     }
   },

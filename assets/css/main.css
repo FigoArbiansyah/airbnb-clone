@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@media screen and (min-width: 1400px) {
+/* @media screen and (min-width: 1400px) {
   .main-content {
     width: 75%;
     margin: auto;
   }
-}
+} */
