@@ -101,8 +101,14 @@
   </div>
   <div class="text-center w-full flex justify-end max-md:justify-between fixed bottom-0 pt-3 py-4 md:px-[115px] px-5 gap-x-4 items-center bg-white border-t">
   <p class="font-semibold md:text-xl">Rp. {{totalPriceAtCart.toLocaleString("id-ID").split(",")[0]}}</p>
+    <div
+      v-if="totalPriceAtCart == 0"
+      class="py-3 px-10 bg-[#EF5A5F] rounded-lg font-semibold text-white transition-all ease button-co bg-opacity-75 cursor-pointer"
+      >Checkout</div
+    >
     <NuxtLink
-      to="/reservation"
+      v-else
+      to="/summary"
       class="py-3 px-10 bg-[#EF5A5F] hover:bg-[#FF5F5C] rounded-lg font-semibold text-white transition-all ease button-co"
       >Checkout</NuxtLink
     >

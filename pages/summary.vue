@@ -77,7 +77,7 @@
                   (
                     data.price * 14987 -
                     data.price * 14987 * (data.discountPercentage / 100)
-                  ).toLocaleString()
+                  ).toLocaleString().split(".")[0]
                 }}
               </p>
               <p class="">x {{ data.quantity }} pcs</p>
@@ -91,7 +91,7 @@
                       (data.price * 14987 -
                         data.price * 14987 * (data.discountPercentage / 100)) *
                       data.quantity
-                    ).toLocaleString("id-ID")
+                    ).toLocaleString("id-ID").split(",")[0]
                   }}</span
                 >
               </p>
@@ -139,14 +139,14 @@
                       (data.price * 14987 -
                         data.price * 14987 * (data.discountPercentage / 100)) *
                       data.quantity
-                    ).toLocaleString("id-ID")
+                    ).toLocaleString("id-ID").split(",")[0]
                   }}
                 </p>
               </div>
             </div>
             <div class="pt-5 flex justify-between font-semibold pb-2">
               <p>Total (IDR)</p>
-              <p>Rp. {{ total.toLocaleString() }}</p>
+              <p>Rp. {{ total.toLocaleString().split(".")[0] }}</p>
             </div>
           </div>
         </div>
@@ -154,9 +154,14 @@
     </main>
   </div>
   <!-- TOTAL FIXED -->
-  <div class="pt-5 flex justify-between font-semibold py-4 fixed bottom-0 bg-white w-full border-t px-4">
-    <p>Total (IDR)</p>
-    <p>Rp. {{ total.toLocaleString() }}</p>
+  <div class="py-4 fixed bottom-0 bg-white w-full border-t px-4 z-50">
+    <div class="flex justify-between font-semibold ">
+      <p>Total (IDR)</p>
+      <p>Rp. {{ total.toLocaleString().split(".")[0] }}</p>
+    </div>
+    <div class="text-end mt-6">
+      <a :href="`https://wa.me/0895358905664?text=${message}`" class="py-2 px-4 bg-[#EF5A5F] hover:bg-[#FF5F5C] rounded-lg font-semibold text-white transition-all ease" target="_blank">Pesan Sekarang</a>
+    </div>
   </div>
 </template>
 
@@ -167,6 +172,7 @@ export default {
       id: null,
       products: [],
       total: 0,
+      message: ""
     };
   },
   mounted() {
@@ -181,6 +187,9 @@ export default {
                 (this.products[i].discountPercentage / 100)) *
             this.products[i].quantity;
         }
+        this.message = "Saya ingin membeli " + this.products.map(product => {
+          return product.title
+        }) + " dengan total harga Rp. " + this.total.toLocaleString().split(".")[0]
       }
     }
   },
