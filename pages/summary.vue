@@ -77,7 +77,7 @@
                   (
                     data.price * 14987 -
                     data.price * 14987 * (data.discountPercentage / 100)
-                  ).toLocaleString().split(".")[0]
+                  ).toLocaleString()
                 }}
               </p>
               <p class="">x {{ data.quantity }} pcs</p>
