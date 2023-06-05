@@ -245,7 +245,7 @@
           </div>
         </div>
         <div
-          class="md:block cart-form md:col-span-5 md:border p-5 md:rounded-xl md:sticky md:top-8 self-start md:shadow max-md:fixed max-md:-bottom-64 max-md:left-0 max-md:w-full max-md:bg-white z-50 transition-all ease duration-500"
+          class="md:block cart-form md:col-span-5 md:border p-5 md:rounded-xl md:sticky md:top-8 self-start md:shadow max-md:fixed max-md:-bottom-96 max-md:left-0 max-md:w-full max-md:bg-white z-50 transition-all ease duration-500"
         >
           <div class="md:hidden flex justify-between max-md:flex-col max-md:items-start gap-y-2 text-black float-right">
             <p class="font-semibold">
@@ -320,11 +320,18 @@
             </div>
           </div>
           <div class="mt-4 text-center">
-            <button class="w-full" @click="setCart()">
+            <button class="w-1/2 pr-2" @click="setCart()">
               <div
-                class="w-full text-center py-3 bg-[#EF5A5F] hover:bg-[#FF5F5C] rounded-xl font-semibold text-white transition-all ease"
+                class="w-full text-center py-3 border border-[#EF5A5F] text-[#EF5A5F] hover:bg-[#FF5F5C] font-semibold hover:text-white transition-all ease"
               >
-                Pesan
+                Masukkan Keranjang
+              </div>
+            </button>
+            <button class="w-1/2 pl-2" @click="buyNow()">
+              <div
+                class="w-full text-center py-3 bg-[#EF5A5F] hover:bg-[#FF5F5C] font-semibold text-white transition-all ease"
+              >
+                Pesan Sekarang
               </div>
             </button>
             <p class="text-gray-600 mt-3 max-md:hidden">Anda belum dikenakan biaya</p>
@@ -485,6 +492,36 @@ export default {
         console.log(error);
       }
     },
+    async buyNow() {
+      try {
+        const user = JSON.parse(localStorage.getItem("user")) || "";
+        if (user == 0 || user == "") {
+          alert("Login terlebih dahulu");
+          return false;
+        } else {
+          const products = JSON.parse(localStorage.getItem("products")) || [];
+          const newData = {
+            userId: user?.id,
+            id: this.$route.params.id,
+            img: this.data.thumbnail,
+            title: this.data.title,
+            price: this.data.price,
+            quantity: this.qty,
+            stock: this.data.stock,
+            total: ((this.data.price * 14987 - this.data.price * 14987 * (this.data.discountPercentage / 100)) * this.data.quantity),
+            discountPercentage: this.data.discountPercentage,
+            discountedPrice:
+              this.data.price -
+              this.data.price * (this.data.discountPercentage / 100),
+          };
+          products.push(newData);
+          localStorage.setItem("products", JSON.stringify(products));
+          location.href = "/summary"
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     scrollToNext(id) {
       const images = document.querySelector(".images" + id);
       images.scrollLeft += images.offsetWidth;
@@ -499,8 +536,13 @@ export default {
       const txtBatal = document.querySelector(".batal")
       txtPesan.classList.toggle("hidden")
       txtBatal.classList.toggle("hidden")
-      form.classList.toggle("max-md:-bottom-64")
+      form.classList.toggle("max-md:-bottom-96")
       form.classList.toggle("max-md:bottom-0")
+    }
+  },
+  mounted() {
+    if (process.client) {
+      localStorage.setItem("products", JSON.stringify([]));
     }
   },
   setup() {
