@@ -1,4 +1,5 @@
 <template>
+  <!-- TOTAL CARD -->
   <div class="lg:col-span-4 md:col-span-2 col-span-2">
     <div class="mt-3 flex justify-center">
       <div class="py-4 px-3 border rounded-xl flex items-center">
@@ -19,6 +20,7 @@
       </div>
     </div>
   </div>
+  <!-- LOADING SCREEN -->
   <div
     v-if="datas.length == 0 || !isShow"
     class="absolute flex justify-center w-full md:pt-28 pt-48"
@@ -32,24 +34,35 @@
       <span></span>
     </div>
   </div>
+  <!-- CARD -->
   <div
     v-else
     v-for="data in datas"
     :key="data.id"
-    class="min-h-36 relative group cursor-pointer transition-all ease duration-300"
+    class="min-h-36 relative group transition-all ease duration-300"
   >
-    <NuxtLink
-      :class="`w-full h-auto overflow-auto flex rounded-xl relative images${data.id} scroll-smooth image-wrapper`"
-      :to="`/products/${data.id}`"
+    <swiper
+    direction="horizontal"
+    :slides-per-view="1"
+    navigation
+    :pagination="{ clickable: false }"
+    @swiper="onSwiper"
+    @slideChange="onSlideChange"
+    :modules="modules"
+      :class="`w-full rounded-xl relative images${data.id} scroll-smooth`"
     >
-      <img :src="data?.thumbnail" alt="" class="aspect-square object-cover w-full image-products" />
-      <img
-        v-for="images in data.images"
-        :src="images"
-        alt=""
-        class="aspect-square object-cover w-full image-products"
-      />
-    </NuxtLink>
+      <swiper-slide class="">
+        <img :src="data?.thumbnail" alt="" class="aspect-square object-cover w-full image-products" />
+      </swiper-slide>
+      <swiper-slide class="" v-for="(images, i) in data.images">
+        <img
+          :key="i"
+          :src="images"
+          alt=""
+          class="aspect-square object-cover w-full image-products"
+        />
+      </swiper-slide>
+    </swiper>
     <NuxtLink class="mt-3 flex gap-x-2 justify-between max-md:flex-col" :to="`/products/${data.id}`">
       <div>
         <p class="font-semibold">{{ data.title }}</p>
@@ -85,7 +98,7 @@
         <p class="text-gray-600 md:-mt-1">{{ data.stock }} pcs</p>
       </div>
     </NuxtLink>
-    <div
+    <!-- <div
       class="absolute w-[87%] left-0 md:top-[40%] max-md:top-[30%] max-md:-translate-y-[30%] h-0 hidden group-hover:flex justify-between items-center pl-8 max-md:pr-4 transition-all ease duration-300"
     >
       <div class="relative h-full flex items-center">
@@ -132,16 +145,31 @@
           </svg>
         </button>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
   data() {
-    return { datas: [], route: useRoute(), isShow: true, discountPrice: false };
+    return { 
+      datas: [], 
+      route: useRoute(), 
+      isShow: true, 
+      discountPrice: false,
+    };
   },
   props: ["category", "query"],
   async created() {
@@ -186,11 +214,23 @@ export default {
       this.discountPrice = !this.discountPrice
     }
   },
-  mounted() {},
+  setup() {
+    const onSwiper = (swiper) => {
+      console.log(swiper);
+    };
+    const onSlideChange = () => {
+      console.log('slide change');
+    };
+    return {
+      onSwiper,
+      onSlideChange,
+      modules: [Navigation, Pagination]
+    };
+  },
 };
 </script>
 
-<style scope>
+<style>
 .image-wrapper {
   scroll-snap-type: x mandatory;
 }
@@ -258,5 +298,26 @@ export default {
 }
 .image-products {
   aspect-ratio: 1/1;
+}
+.swiper:hover .swiper-button-next, .swiper:hover .swiper-button-prev  {
+  opacity: 1 !important;
+}
+.swiper:hover .swiper-button-disabled {
+  opacity: 0.3 !important
+}
+.swiper-button-next, .swiper-button-prev {
+  color: #ff5f5c !important;
+  transform: scale(.6) !important;
+  opacity: 0 !important;
+  transition: all .3s ease;
+}
+.swiper-button-disabled {
+  opacity: 0 !important
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  transform: scale(.8) !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: #ff5f5c !important;
 }
 </style>

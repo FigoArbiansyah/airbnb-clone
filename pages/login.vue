@@ -23,7 +23,6 @@
         />
       </div>
       <div class="mt-6 flex justify-end items-center">
-      <!-- <NuxtLink to="/" class="underline">Lewati</NuxtLink> -->
         <button
           @click="handleLogin()"
           class="py-2 px-5 bg-[#FF5F5C] hover:bg-[#EF5A5F] text-white rounded transition-all"

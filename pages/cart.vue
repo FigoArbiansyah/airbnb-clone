@@ -37,20 +37,7 @@
                       ).toLocaleString("id-ID").split(",")[0]
                     }}</span
                   >
-                  <!-- <span class="text-gray-600 text-sm"> x {{ data.quantity }} pcs</span> -->
                 </p>
-                <!-- <p class="text-sm">
-                  <span class="font-semibold text-lg"
-                    >Rp.
-                    {{
-                      (
-                        (data.price * 14987 -
-                          data.price * 14987 * (data.discountPercentage / 100)) *
-                        data.quantity
-                      ).toLocaleString("id-ID")
-                    }}</span
-                  >
-                </p> -->
                 <div>
                   <div class="flex items-center mt-3 justify-start">
                     <button class="p-2 text-xl cursor-pointer" @click="data.quantity -= 1; changeQty(
@@ -62,12 +49,6 @@
                           data.discountPercentage,
                           data.discountedPrice
                         )" :disabled="data.quantity == 1 ? true : false">-</button>
-                    <!-- <div class="w-12" v-if="data.quantity == 0 || data.quantity == 1 || data.quantity == ``">
-                      <input type="number" value="1" class="pl-4 w-full">
-                    </div> -->
-                    <!-- <div class="w-12">
-                      <input type="number" v-model="data.quantity" class="pl-4 w-full">
-                    </div> -->
                     <div class="w-12">
                       <p class="pl-4 w-full">{{data.quantity}}</p>
                     </div>
@@ -255,10 +236,6 @@ export default {
       this.cancelButton(id)
       const user = JSON.parse(localStorage.getItem("user"));
       const carts = JSON.parse(localStorage.getItem("carts"))
-      // const selectedData = this.historySelected.filter((data) => data.id != id)
-      // const notSelectedData = this.historySelected.filter((data) => data.id == id)[0]
-      // this.historySelected = selectedData
-      // this.totalPriceAtCart -= notSelectedData.total
       localStorage.setItem("carts", JSON.stringify([]))
       const datas = carts.filter((data) => !(data.id == id && data.userId == user.id));
       localStorage.setItem("carts", JSON.stringify(datas))

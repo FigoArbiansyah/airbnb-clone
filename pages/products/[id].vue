@@ -128,13 +128,6 @@
               <div class="mt-4 py-1 px-3 bg-[#FF5F5C] text-white w-auto inline-block rounded">{{data.discountPercentage}}%</div>
               
             </div>
-            <!-- <div>
-              <img
-                src="~/assets/img/profile.webp"
-                class="w-14 h-14 rounded-full"
-                alt=""
-              />
-            </div> -->
           </div>
           <div class="mt-5 max-md:pb-64">
             <table>
@@ -159,15 +152,6 @@
                 <td>{{data.stock}} pcs</td>
               </tr>
             </table>
-            <!-- <p class="text-gray-900">
-              Kategori: 
-              <NuxtLink
-                :to="`/category/${data.category}`"
-                class="underline"
-                >{{ data.category }}</NuxtLink
-              >
-            </p>
-            <p>Brand: {{ data.brand }}</p> -->
             <p class="text-gray-800 mt-2">{{ data?.description }}.</p>
             <p class="text-gray-800 mt-2">Produk ini merupakan hasil inovasi terbaru yang dirancang untuk memenuhi kebutuhan dan keinginan konsumen modern. Dengan menggabungkan teknologi canggih, desain estetika yang menawan, dan kinerja yang luar biasa, produk ini hadir sebagai solusi yang sempurna untuk memudahkan kehidupan sehari-hari.
             </p>
