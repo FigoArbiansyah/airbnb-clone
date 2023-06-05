@@ -216,16 +216,39 @@ export default {
       const totalPriceWithOutQty = (price * 14987 - price * 14987 * (discountPercentage / 100))
       const isAvailable = this.historySelected.some(item => item.id == id)
       if (isAvailable) {
+        const oldData = this.historySelected.filter(item => item.id != id)
+        const changedData = this.historySelected.filter(item => item.id == id)
+        console.log(changedData)
         for (let i = 0; i < this.historySelected.length; i++) {
           if (id == this.historySelected[i].id) {
+            this.historySelected[i].title = title
             this.historySelected[i].quantity += quantity
             this.historySelected[i].quantity = quantity
-            const newQty = this.historySelected[i].quantity = quantity
-            const total = totalPriceWithOutQty * newQty
+            this.historySelected[i].price = price
+            this.historySelected[i].discountPercentage = discountPercentage
+            const total = ((this.historySelected[i].price * 14987 - this.historySelected[i].price * 14987 * (this.historySelected[i].discountPercentage / 100)) * this.historySelected[i].quantity)
             this.historySelected[i].total = total
+            this.historySelected[i].discountedPrice = discountedPrice
+            // this.historySelected[i].quantity += quantity
+            // this.historySelected[i].quantity = quantity
+            const newQty = this.historySelected[i].quantity = quantity
+            // const total = totalPriceWithOutQty * newQty
+            // this.historySelected[i].total = total
             this.totalPriceAtCart = this.historySelected.reduce((acc, obj) => acc + obj.total, 0);
+            // this.historySelected.push({id: this.historySelected[i].id, quantity: this.historySelected[i].quantity, total:totalPriceWithOutQty * this.historySelected[i].quantity})
+            const notSelectedData = this.historySelected.filter(item => item.id != this.historySelected[i].id)
+            // this.historySelected = notSelectedData
+            localStorage.setItem("products", JSON.stringify(notSelectedData))
+            if (notSelectedData.length == 0) {
+              localStorage.setItem("products", JSON.stringify([this.historySelected[i]]))
+            } else {
+              localStorage.setItem("products", JSON.stringify(notSelectedData))
+              const data = JSON.parse(localStorage.getItem("products"))
+              data.push(this.historySelected[i])
+              localStorage.setItem("products", JSON.stringify(data))
+            }
           }
-        }
+        } 
       } else {
         this.historySelected.push({id: id, quantity, total:totalPriceWithOutQty * quantity})
         console.log(isAvailable)

@@ -95,7 +95,7 @@
             <div
               class="absolute top-14 right-0 w-[18rem] bg-white rounded-lg shadow border z-[100] cursor-default hidden user-action py-1"
             >
-              <NuxtLink v-if="user" to="/" class="w-full py-3 px-5 hover:bg-slate-100 block ">Profil</NuxtLink>
+              <NuxtLink v-if="user" to="/my_account" class="w-full py-3 px-5 hover:bg-slate-100 block ">Profil</NuxtLink>
               <NuxtLink v-if="user == ``" to="/login" class="w-full py-3 px-5 hover:bg-slate-100 block ">Login</NuxtLink>
               <button v-else class="w-full py-3 px-5 hover:bg-slate-100 block text-start" @click="handleLogout()">Logout</button>
             </div>
