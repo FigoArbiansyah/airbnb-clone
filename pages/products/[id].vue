@@ -70,7 +70,7 @@
             </div>
           </div>
         </div>
-        <div class="md:mt-6 md:flex md:rounded-xl overflow-hidden max-md:overflow-x-auto image-swipe">
+        <div class="md:mt-6 md:flex md:rounded-xl overflow-hidden max-md:hidden max-md:overflow-x-auto image-swipe">
           <div class="md:w-1/2 md:pr-1 max-md:hidden">
             <img
               :src="data?.thumbnail"
@@ -113,6 +113,32 @@
             />
           </div>
         </div>
+        <div class="md:hidden">
+          <swiper
+            direction="horizontal"
+            :slides-per-view="1"
+            navigation
+            :pagination="{ clickable: false }"
+            @swiper="onSwiper"
+            @slideChange="onSlideChange"
+            :modules="modules" 
+            class="md:hidden flex max-md:overflow-x-auto">
+            <swiper-slide class="md:w-1/2 md:pr-1 md:hidden">
+              <img
+                :src="data?.thumbnail"
+                alt=""
+                class="w-full md:aspect-video aspect-square max-md:h-full object-cover"
+              />
+            </swiper-slide>
+            <swiper-slide v-if="data?.images?.lentgh != 0" v-for="image in data?.images" class="md:w-1/2 md:pl-1 md:grid md:gap-2 grid-cols-2 max-md:flex md:hidden" >
+              <img
+                :src="image"
+                alt=""
+                class="w-full md:aspect-video aspect-square max-md:h-full object-cover "
+              />
+            </swiper-slide>
+          </swiper>
+        </div>
       </section>
       <section
         class="mt-8 grid md:grid-cols-12 grid-cols-1 gap-16 md:px-[115px] px-5 relative"
@@ -129,7 +155,7 @@
               
             </div>
           </div>
-          <div class="mt-5 max-md:pb-64">
+          <div class="mt-5 max-md:pb-12">
             <table>
               <tr>
                 <td>Kategori</td>
@@ -151,6 +177,11 @@
                 <td>&nbsp; : &nbsp;</td>
                 <td>{{data.stock}} pcs</td>
               </tr>
+              <tr>
+                <td>Rate</td>
+                <td>&nbsp; : &nbsp;</td>
+                <td>{{data.rating}} / 5</td>
+              </tr>
             </table>
             <p class="text-gray-800 mt-2">{{ data?.description }}.</p>
             <p class="text-gray-800 mt-2">Produk ini merupakan hasil inovasi terbaru yang dirancang untuk memenuhi kebutuhan dan keinginan konsumen modern. Dengan menggabungkan teknologi canggih, desain estetika yang menawan, dan kinerja yang luar biasa, produk ini hadir sebagai solusi yang sempurna untuk memudahkan kehidupan sehari-hari.
@@ -170,6 +201,12 @@
               </p>
             </div>
             <p class="underline mt-2 cursor-pointer mb-3" @click="deskripsiShow = !deskripsiShow"><span v-if="!deskripsiShow">Lihat selengkapnya</span><span v-else>Lihat lebih sedikit</span></p>
+            <div class="mb-3 md:hidden">
+              <button @click="openCartForm()" class="py-2 px-4 bg-[#ff5f5c] rounded border border-white text-white hover:border-[#ff5f5c] hover:bg-transparent hover:text-[#ff5f5c] transition-all ease duration-300">
+                <span class="pesan">Pesan sekarang</span>
+                <span class="batal hidden">Batalkan</span>
+              </button>
+            </div>
             <div class="text-2xl font-semibold text-gray-700 py-4 border-t">
               Ulasan
             </div>
@@ -208,9 +245,9 @@
           </div>
         </div>
         <div
-          class="md:col-span-5 md:border p-5 md:rounded-xl md:sticky md:top-8 self-start md:shadow max-md:fixed max-md:bottom-0 max-md:left-0 max-md:w-full max-md:bg-white z-50"
+          class="md:block cart-form md:col-span-5 md:border p-5 md:rounded-xl md:sticky md:top-8 self-start md:shadow max-md:fixed max-md:-bottom-64 max-md:left-0 max-md:w-full max-md:bg-white z-50 transition-all ease duration-500"
         >
-        <div class="md:hidden flex justify-between max-md:flex-col max-md:items-start gap-y-2 text-black float-right">
+          <div class="md:hidden flex justify-between max-md:flex-col max-md:items-start gap-y-2 text-black float-right">
             <p class="font-semibold">
               Rp
               {{
@@ -331,12 +368,22 @@
       </section>
     </main>
   </div>
+  <Footer />
 </template>
 
 <script>
 import axios from "axios";
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
   data() {
     return {
       data: [],
@@ -446,6 +493,28 @@ export default {
       const images = document.querySelector(".images" + id);
       images.scrollLeft -= images.offsetWidth;
     },
+    openCartForm() {
+      const form = document.querySelector(".cart-form")
+      const txtPesan = document.querySelector(".pesan")
+      const txtBatal = document.querySelector(".batal")
+      txtPesan.classList.toggle("hidden")
+      txtBatal.classList.toggle("hidden")
+      form.classList.toggle("max-md:-bottom-64")
+      form.classList.toggle("max-md:bottom-0")
+    }
+  },
+  setup() {
+    const onSwiper = (swiper) => {
+      console.log(swiper);
+    };
+    const onSlideChange = () => {
+      console.log('slide change');
+    };
+    return {
+      onSwiper,
+      onSlideChange,
+      modules: [Navigation, Pagination]
+    };
   },
 };
 </script>

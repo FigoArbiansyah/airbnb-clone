@@ -35,11 +35,12 @@
     </div>
   </div>
   <!-- CARD -->
-  <div
+  <NuxtLink
     v-else
     v-for="data in datas"
     :key="data.id"
     class="min-h-36 relative group transition-all ease duration-300"
+    :to="`/products/${data.id}`"
   >
     <swiper
     direction="horizontal"
@@ -49,7 +50,7 @@
     @swiper="onSwiper"
     @slideChange="onSlideChange"
     :modules="modules"
-      :class="`w-full rounded-xl relative images${data.id} scroll-smooth`"
+      :class="`w-full md:rounded-xl relative images${data.id} scroll-smooth`"
     >
       <swiper-slide class="">
         <img :src="data?.thumbnail" alt="" class="aspect-square object-cover w-full image-products" />
@@ -63,23 +64,28 @@
         />
       </swiper-slide>
     </swiper>
-    <NuxtLink class="mt-3 flex gap-x-2 justify-between max-md:flex-col" :to="`/products/${data.id}`">
+    <NuxtLink class="mt-3 flex gap-x-2 justify-between max-md:flex-col max-md:px-2">
       <div>
-        <p class="font-semibold">{{ data.title }}</p>
-        <p class="text-gray-600">{{ data.brand }}, {{ data.category }}</p>
-        <p v-if="!discountPrice" class="font-semibold">
-          Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
-        </p>
-        <div v-if="discountPrice">
-          <p class="line-through">
+        <div>
+          <p class="font-semibold">{{ data.title }}</p>
+          <p class="text-gray-600 max-md:hidden">{{ data.description.substring(0, 26) }}...</p>
+          <p class="text-gray-600 md:hidden">{{ data.description.substring(0, 13) }}...</p>
+        </div>
+        <div>
+          <p v-if="!discountPrice" class="font-semibold">
             Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
           </p>
-          <p class="font-semibold">
-            Rp {{ ((data.price * 14987 - data.price * 14987 * (data.discountPercentage / 100)).toLocaleString("id-ID")).split(",")[0] }}
-          </p>
+          <div v-if="discountPrice">
+            <p class="line-through">
+              Rp {{ (data.price * 14987).toLocaleString("id-ID") }}
+            </p>
+            <p class="font-semibold">
+              Rp {{ ((data.price * 14987 - data.price * 14987 * (data.discountPercentage / 100)).toLocaleString("id-ID")).split(",")[0] }}
+            </p>
+          </div>
         </div>
       </div>
-      <div class="max-md:flex justify-between items-center">
+      <div class="max-md:flex justify-between items-center mt-1">
         <p class="flex gap-x-[3px] items-center">
           <svg
             width="14"
@@ -90,12 +96,12 @@
           >
             <path
               d="M4 0L4.89806 2.76393H7.80423L5.45308 4.47214L6.35114 7.23607L4 5.52786L1.64886 7.23607L2.54692 4.47214L0.195774 2.76393H3.10194L4 0Z"
-              fill="#000"
+              fill="rgb(255, 238, 0)"
             />
           </svg>
-          <span>{{ data.rating }}</span>
+          <span class="text-sm">{{ data.rating }}</span>
         </p>
-        <p class="text-gray-600 md:-mt-1">{{ data.stock }} pcs</p>
+        <p class="text-gray-600 md:mt-1 text-xs">{{ data.stock }} pcs</p>
       </div>
     </NuxtLink>
     <!-- <div
@@ -146,7 +152,7 @@
         </button>
       </div>
     </div> -->
-  </div>
+  </NuxtLink>
 </template>
 
 <script>
