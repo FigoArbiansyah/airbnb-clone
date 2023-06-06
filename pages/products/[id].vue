@@ -1,9 +1,5 @@
 <template>
-  <div class="main-content pb-20">
-    <header class="z-50 bg-white">
-      <Navbar />
-    </header>
-    <main class="min-h-screen">
+  <NuxtLayout name="detail">
       <section class="relative md:mt-5 md:px-[115px]">
         <div class="mt-3 max-md:hidden">
           <p class="text-2xl font-semibold">{{ data?.title }}</p>
@@ -373,9 +369,7 @@
           </div>
         </div>
       </section>
-    </main>
-  </div>
-  <Footer />
+  </NuxtLayout>
 </template>
 
 <script>

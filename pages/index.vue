@@ -1,5 +1,5 @@
 <template>
-  <main class="main-content">
+  <NuxtLayout name="main">
     <TopNav />
     <header class="z-50 bg-white md:sticky md:top-0">
       <Navbar>
@@ -13,8 +13,7 @@
         <Card :category="null" />
       </section>
     </div>
-  </main>
-  <Footer />
+  </NuxtLayout>
 </template>
 
 <script setup>
