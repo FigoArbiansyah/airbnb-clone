@@ -7,7 +7,7 @@
     >
       <NuxtLink
         v-for="category in categories"
-        :to="`/category/${category}`"
+        :to="`/category/${category?.slug}`"
         class="flex flex-col category-item items-center gap-y-2 text-sm pb-3 opacity-75 hover:opacity-100 hover:border-b-2 hover:border-gray-200 border-b-2 border-white transition-all ease cursor-pointer relative"
       >
         <img
@@ -15,7 +15,7 @@
           alt=""
           class="w-6 h-6"
         />
-        <p>{{ category }}</p>
+        <p>{{ category?.name }}</p>
       </NuxtLink>
     </div>
     <NuxtLink
